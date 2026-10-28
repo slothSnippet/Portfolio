@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F1 Grand Prix Portfolio | Driver & Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Orbitron:wght@500;700;900&family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==================== AMBIENT F1 AUDIO/RADIO TOGGLE (PURE CSS) ==================== -->
+  <input type="checkbox" id="radio-chatter-toggle" class="sr-only">
+  
+  <!-- ==================== TOP TELEMETRY TICKER & F1 RACE CONTROL ==================== -->
+  <div class="f1-ticker-strip">
+    <div class="ticker-left">
+      <span class="f1-live-badge"><span class="blink-dot"></span> LIVE TIMING</span>
+      <span class="ticker-event">PUNE - DELHI GRAND PRIX 2026 // SEASON OPENER</span>
+    </div>
+    <div class="ticker-center">
+      <span class="track-status green">TRACK STATUS: ALL GREEN</span>
+      <span class="sector-time">SECTOR 1: <strong class="purple-time">24.182s 🟣</strong></span>
+      <span class="sector-time">SECTOR 2: <strong class="green-time">28.004s 🟢</strong></span>
+      <span class="sector-time">DRS: <strong class="drs-enabled">ENABLED</strong></span>
+    </div>
+    <div class="ticker-right">
+      <label for="radio-chatter-toggle" class="radio-pill-btn">
+        <span class="radio-icon">📻</span> TEAM RADIO [HUD ON]
+      </label>
+    </div>
+  </div>
+
+  <!-- ==================== ROLLING TYRE NAVBAR ==================== -->
+  <header class="f1-nav-wrapper">
+    <div class="tyre-nav-container">
+      <!-- Mobile Nav Toggle (Pure CSS) -->
+      <input type="checkbox" id="mobile-nav-toggle" class="sr-only mobile-toggle-checkbox">
+
+      <!-- Pirelli Rolling Wheel Element -->
+      <div class="rolling-wheel-assembly" title="Pirelli P-Zero Rolling Wheel">
+        <div class="tyre-tread">
+          <div class="tyre-wall yellow-compound">
+            <span class="tyre-brand top">P ZERO</span>
+            <span class="tyre-compound">SOFT</span>
+            <span class="tyre-brand bottom">PIRELLI</span>
+            <div class="alloy-rim">
+              <div class="spoke spoke-1"></div>
+              <div class="spoke spoke-2"></div>
+              <div class="spoke spoke-3"></div>
+              <div class="spoke spoke-4"></div>
+              <div class="spoke spoke-5"></div>
+              <div class="center-lock red-nut">
+                <span class="lock-pin"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tyre-smoke-trail"></div>
+        <div class="skid-mark"></div>
+      </div>
+
+      <!-- Navigation Bar revealed out of the rolling tyre -->
+      <nav class="f1-navbar">
+        <div class="nav-brand">
+          <span class="f1-car-logo">🏎️</span>
+          <span class="driver-tag">HEYAK<span class="driver-num-tag">#01</span></span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#driver" class="nav-link"><span class="nav-step">01.</span> GRID PROFILE</a></li>
+          <li><a href="#skills" class="nav-link"><span class="nav-step">02.</span> TIMING TOWER</a></li>
+          <li><a href="#projects" class="nav-link"><span class="nav-step">03.</span> PIT WALL</a></li>
+          <li><a href="#about" class="nav-link"><span class="nav-step">04.</span> DRIVER DOSSIER</a></li>
+          <li><a href="#experience" class="nav-link"><span class="nav-step">05.</span> GRAND PRIX</a></li>
+          <li><a href="#contact" class="nav-link nav-link-cta"><span class="nav-step">06.</span> PIT RADIO</a></li>
+        </ul>
+      </nav>
+
+      <!-- Pure CSS Mobile Hamburger Button -->
+      <label for="mobile-nav-toggle" class="mobile-menu-burger" aria-label="Toggle Navigation Menu">
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+      </label>
+    </div>
+  </header>
+
+  <!-- ==================== SCROLLING F1 CAR BACKGROUND BACKDROP ==================== -->
+  <div class="dynamic-f1-backdrop" aria-hidden="true">
+    <div class="backdrop-gradient"></div>
+    <div class="carbon-grid-overlay"></div>
+    <div class="speed-lines-container">
+      <span class="speed-line line-1"></span>
+      <span class="speed-line line-2"></span>
+      <span class="speed-line line-3"></span>
+      <span class="speed-line line-4"></span>
+      <span class="speed-line line-5"></span>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==================== SECTION 1: DRIVER PROFILE (PRE-RACE GRID) ==================== -->
+    <section id="driver" class="section f1-driver-section">
+      <!-- Background F1 Car Silhouette / Livery: Ferrari SF-24 Rosso Corsa -->
+      <div class="car-livery-bg ferrari-bg" aria-hidden="true">
+        <div class="livery-watermark">SCUDERIA // SF-24</div>
+        <div class="f1-car-vector ferrari-vector">
+          <!-- Ferrari aerodynamic side profile -->
+          <svg viewBox="0 0 1200 350" class="car-svg">
+            <defs>
+              <linearGradient id="ferrariGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#E8002D"/>
+                <stop offset="60%" stop-color="#FF1E00"/>
+                <stop offset="85%" stop-color="#111111"/>
+                <stop offset="100%" stop-color="#000000"/>
+              </linearGradient>
+              <linearGradient id="yellowStripe" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FFF200"/>
+                <stop offset="100%" stop-color="#FFD700"/>
+              </linearGradient>
+            </defs>
+            <!-- Rear wing -->
+            <path d="M 100 80 L 220 80 L 230 140 L 120 150 Z" fill="#111111" stroke="#E8002D" stroke-width="3"/>
+            <path d="M 120 70 L 240 70 L 235 90 L 115 90 Z" fill="#E8002D"/>
+            <!-- Bodywork chassis -->
+            <path d="M 210 140 C 270 140, 360 120, 480 130 C 580 138, 660 110, 720 150 L 980 190 C 1060 205, 1140 220, 1180 230 L 1190 250 L 950 245 C 870 245, 780 240, 720 235 L 540 240 L 320 240 L 200 240 Z" fill="url(#ferrariGrad)"/>
+            <!-- Yellow Modena Racing Accent -->
+            <path d="M 450 145 C 540 145, 650 130, 740 165 L 940 200 L 930 205 L 730 172 C 640 140, 530 152, 450 152 Z" fill="url(#yellowStripe)"/>
+            <!-- Cockpit & Halo -->
+            <path d="M 520 125 C 560 90, 640 90, 680 140 Z" fill="#050505" stroke="#E8002D" stroke-width="4"/>
+            <path d="M 570 100 C 600 85, 650 85, 670 120" stroke="#FFF200" stroke-width="6" fill="none"/>
+            <circle cx="610" cy="120" r="14" fill="#E8002D"/> <!-- Driver Helmet -->
+            <!-- Front Wing -->
+            <path d="M 1020 220 L 1195 240 L 1185 270 L 1010 250 Z" fill="#111111" stroke="#E8002D" stroke-width="3"/>
+            <!-- Wheels (Pure SVG with rims) -->
+            <!-- Rear Wheel -->
+            <circle cx="280" cy="225" r="75" fill="#151515" stroke="#E8002D" stroke-width="6"/>
+            <circle cx="280" cy="225" r="48" fill="#0A0A0A" stroke="#444" stroke-width="3"/>
+            <circle cx="280" cy="225" r="18" fill="#E8002D"/>
+            <!-- Front Wheel -->
+            <circle cx="940" cy="225" r="75" fill="#151515" stroke="#E8002D" stroke-width="6"/>
+            <circle cx="940" cy="225" r="48" fill="#0A0A0A" stroke="#444" stroke-width="3"/>
+            <circle cx="940" cy="225" r="18" fill="#E8002D"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="f1-container">
+        <!-- F1 Five Red Lights Starting Sequence -->
+        <div class="starting-gantry">
+          <div class="gantry-light-unit">
+            <span class="light red-1"></span>
+            <span class="light red-2"></span>
+            <span class="light red-3"></span>
+            <span class="light red-4"></span>
+            <span class="light red-5"></span>
+          </div>
+          <div class="gantry-text">LIGHTS OUT AND AWAY WE GO!</div>
+        </div>
+
+        <!-- Authentic F1 TV Broadcast Driver Profile Card -->
+        <div class="driver-broadcast-card">
+          <div class="card-racing-curb top-curb"></div>
+          
+          <div class="driver-card-header">
+            <div class="f1-official-tag">
+              <span class="fia-logo">FIA</span>
+              <span class="driver-season">2026 OFFICIAL DRIVER ROSTER</span>
+            </div>
+            <div class="starting-grid-pos">POLE POSITION // P1</div>
+          </div>
+
+          <div class="driver-card-body">
+            <!-- Left: Driver Big Number & Helmet -->
+            <div class="driver-num-col">
+              <div class="driver-mega-number">01</div>
+              <div class="driver-helmet-badge">
+                <div class="helmet-visor"></div>
+                <div class="helmet-stripes">
+                  <span class="tri-color saffron"></span>
+                  <span class="tri-color white"></span>
+                  <span class="tri-color green"></span>
+                </div>
+                <span class="driver-helmet-label">IND // RE-26</span>
+              </div>
+            </div>
+
+            <!-- Center: Driver Identity & Telemetry -->
+            <div class="driver-info-col">
+              <div class="driver-country-row">
+                <span class="flag-icon">🇮🇳</span>
+                <span class="country-name">INDIA</span>
+                <span class="circuit-home">BASED IN: <strong>PUNE / DELHI, INDIA</strong></span>
+              </div>
+              <h1 class="driver-full-name">
+                <span class="driver-given">FULL-STACK</span>
+                <span class="driver-family">ENGINEER</span>
+              </h1>
+              <div class="driver-team-title">
+                <span class="team-color-bar"></span>
+                <span class="team-name">ASPIRING ENTREPRENEUR & HIGH-VELOCITY ARCHITECT</span>
+              </div>
+
+              <p class="driver-grid-bio">
+                Building aerodynamic web architectures with zero latency and ruthless execution. 
+                Specialized in the full product lifecycle from low-level algorithmic foundations (DSA) 
+                to scalable cloud engines (MERN & PERN). Ready to launch transformative startup ventures.
+              </p>
+
+              <!-- Live Telemetry Specs Grid -->
+              <div class="driver-telemetry-hud">
+                <div class="telemetry-box">
+                  <span class="telemetry-label">0-100 KM/H (DEPLOY)</span>
+                  <span class="telemetry-val purple-glow">1.82s <span class="unit">PURPLE</span></span>
+                  <div class="mini-hud-bar"><span class="fill" style="width: 95%;"></span></div>
+                </div>
+                <div class="telemetry-box">
+                  <span class="telemetry-label">STACK GEARBOX</span>
+                  <span class="telemetry-val">8TH GEAR <span class="unit">MERN/PERN</span></span>
+                  <div class="mini-hud-bar"><span class="fill" style="width: 90%;"></span></div>
+                </div>
+                <div class="telemetry-box">
+                  <span class="telemetry-label">SYSTEM RPM</span>
+                  <span class="telemetry-val">15,000 <span class="unit">VCS/DSA</span></span>
+                  <div class="mini-hud-bar"><span class="fill" style="width: 98%;"></span></div>
+                </div>
+                <div class="telemetry-box">
+                  <span class="telemetry-label">PODIUM RELIABILITY</span>
+                  <span class="telemetry-val green-glow">99.98% <span class="unit">UPTIME</span></span>
+                  <div class="mini-hud-bar"><span class="fill" style="width: 100%;"></span></div>
+                </div>
+              </div>
+
+              <!-- Driver Action Buttons -->
+              <div class="driver-cta-row">
+                <a href="#skills" class="f1-btn f1-btn-primary">
+                  <span class="btn-skew">INSPECT TELEMETRY</span>
+                  <span class="btn-flag">🏁</span>
+                </a>
+                <a href="#contact" class="f1-btn f1-btn-secondary">
+                  <span class="btn-skew">CONTACT PITWALL</span>
+                  <span class="btn-icon">⚡</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right: Driver Standing & Track Map -->
+            <div class="driver-stats-col">
+              <div class="paddock-badge">
+                <span class="badge-icon">📍</span>
+                <div class="badge-text">
+                  <span class="b-sub">PADDOCK LOCATION</span>
+                  <span class="b-main">PUNE & DELHI</span>
+                  <span class="b-status">READY TO DEPLOY</span>
+                </div>
+              </div>
+
+              <div class="mini-circuit-map">
+                <div class="circuit-header">
+                  <span>CIRCUIT DOSSIER</span>
+                  <span class="drs-zone">DRS ZONE 1</span>
+                </div>
+                <!-- Pure SVG F1 Track Layout -->
+                <svg viewBox="0 0 200 120" class="track-svg">
+                  <path d="M 30 90 L 160 90 C 185 90, 190 60, 170 40 C 150 20, 120 20, 100 45 L 80 45 C 60 45, 50 15, 25 25 C 5 35, 10 90, 30 90 Z" 
+                        fill="none" stroke="#222" stroke-width="12" stroke-linecap="round"/>
+                  <path d="M 30 90 L 160 90 C 185 90, 190 60, 170 40 C 150 20, 120 20, 100 45 L 80 45 C 60 45, 50 15, 25 25 C 5 35, 10 90, 30 90 Z" 
+                        fill="none" stroke="#E8002D" stroke-width="4" stroke-dasharray="8 4" class="track-racing-line"/>
+                  <circle cx="30" cy="90" r="5" fill="#FFF200" class="car-gps-blip"/>
+                </svg>
+                <div class="circuit-footer">
+                  <span>LAP RECORD: <strong>HEYAK 01:14.28</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-racing-curb bottom-curb"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: SKILLS LEADERBOARD (OVERTAKING CARS) ==================== -->
+    <section id="skills" class="section f1-leaderboard-section">
+      <!-- Background Livery: Mercedes-AMG Petronas W15 (Silver & Teal) -->
+      <div class="car-livery-bg mercedes-bg" aria-hidden="true">
+        <div class="livery-watermark">MERCEDES-AMG // PETRONAS W15</div>
+        <div class="f1-car-vector mercedes-vector">
+          <svg viewBox="0 0 1200 350" class="car-svg">
+            <defs>
+              <linearGradient id="mercedesGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#00A19B"/>
+                <stop offset="35%" stop-color="#00D2BE"/>
+                <stop offset="70%" stop-color="#CCCCCC"/>
+                <stop offset="100%" stop-color="#111111"/>
+              </linearGradient>
+            </defs>
+            <!-- Mercedes aero silhouette -->
+            <path d="M 120 150 C 300 130, 480 125, 700 140 L 980 185 C 1080 200, 1160 220, 1190 240 L 940 240 L 220 240 Z" fill="url(#mercedesGrad)"/>
+            <path d="M 380 140 L 680 130 L 740 160 L 420 170 Z" fill="#00A19B" opacity="0.8"/>
+            <!-- Halo and aero vanes -->
+            <path d="M 540 120 C 580 85, 660 85, 700 130 Z" fill="#111" stroke="#00D2BE" stroke-width="4"/>
+            <!-- Wheels -->
+            <circle cx="300" cy="225" r="75" fill="#151515" stroke="#00D2BE" stroke-width="6"/>
+            <circle cx="960" cy="225" r="75" fill="#151515" stroke="#00D2BE" stroke-width="6"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="f1-container">
+        <!-- Section Header -->
+        <div class="f1-section-header">
+          <div class="f1-badge-wrap">
+            <span class="f1-tag-red">F1 LIVE TIMING TOWER</span>
+            <span class="live-pulse-radar"></span>
+          </div>
+          <h2 class="f1-heading-title">TECHNICAL LEADERBOARD & OVERTAKES</h2>
+          <p class="f1-subheading">
+            Live telemetry of core proficiencies surging ahead on the main straight. 
+            Watch skills engage DRS and execute strategic overtakes across the sectors.
+          </p>
+        </div>
+
+        <!-- Leaderboard Timing Tower Interface -->
+        <div class="timing-tower-card">
+          <div class="tower-top-bar">
+            <div class="tower-title">
+              <span class="tower-f1-icon">🏎️</span>
+              <span>STANDINGS // LAP 44 OF 53</span>
+            </div>
+            <div class="tower-legend">
+              <span class="legend-item"><span class="swatch purple"></span> FASTEST SECTOR</span>
+              <span class="legend-item"><span class="swatch green"></span> PERSONAL BEST</span>
+              <span class="legend-item"><span class="swatch yellow"></span> PIT WINDOW OPEN</span>
+            </div>
+          </div>
+
+          <!-- Leaderboard Table Header -->
+          <div class="leaderboard-table">
+            <div class="lb-row lb-header-row">
+              <span class="col-pos">POS</span>
+              <span class="col-gain">GAIN</span>
+              <span class="col-team">TEAM / TECH</span>
+              <span class="col-skill">CORE SPECIFICATION & ARSENAL</span>
+              <span class="col-s1">S1 TIME</span>
+              <span class="col-s2">S2 TIME</span>
+              <span class="col-s3">S3 TIME</span>
+              <span class="col-gap">INTERVAL</span>
+              <span class="col-drs">DRS</span>
+            </div>
+
+            <!-- LEADERBOARD ROW 1: MERN STACK (Ferrari Livery - Overtaking P1!) -->
+            <div class="lb-row overtake-row-1 team-ferrari">
+              <div class="col-pos"><span class="pos-num p1">P1</span></div>
+              <div class="col-gain"><span class="delta-gain up">▲ +1</span></div>
+              <div class="col-team">
+                <span class="team-stripe ferrari-stripe"></span>
+                <div class="team-meta">
+                  <strong class="driver-name-code">MERN STACK</strong>
+                  <span class="constructor-sub">SCUDERIA FULL-STACK</span>
+                </div>
+              </div>
+              <div class="col-skill">
+                <span class="tech-chips">MongoDB</span>
+                <span class="tech-chips">Express.js</span>
+                <span class="tech-chips">React.js</span>
+                <span class="tech-chips">Node.js</span>
+                <span class="tech-chips highlight">RESTful & Sockets</span>
+              </div>
+              <div class="col-s1"><span class="sector purple-time">24.12s 🟣</span></div>
+              <div class="col-s2"><span class="sector green-time">28.05s 🟢</span></div>
+              <div class="col-s3"><span class="sector purple-time">19.88s 🟣</span></div>
+              <div class="col-gap"><span class="gap-badge leader">LEADER</span></div>
+              <div class="col-drs"><span class="drs-pill active">DRS ENGAGED</span></div>
+            </div>
+
+            <!-- LEADERBOARD ROW 2: PERN STACK (Mercedes Livery - Surging forward!) -->
+            <div class="lb-row overtake-row-2 team-mercedes">
+              <div class="col-pos"><span class="pos-num p2">P2</span></div>
+              <div class="col-gain"><span class="delta-gain up">▲ +2</span></div>
+              <div class="col-team">
+                <span class="team-stripe mercedes-stripe"></span>
+                <div class="team-meta">
+                  <strong class="driver-name-code">PERN STACK</strong>
+                  <span class="constructor-sub">PETRONAS SQL ENGINE</span>
+                </div>
+              </div>
+              <div class="col-skill">
+                <span class="tech-chips">PostgreSQL</span>
+                <span class="tech-chips">Express.js</span>
+                <span class="tech-chips">React.js</span>
+                <span class="tech-chips">Node.js</span>
+                <span class="tech-chips highlight">Prisma & ACID DB</span>
+              </div>
+              <div class="col-s1"><span class="sector green-time">24.20s 🟢</span></div>
+              <div class="col-s2"><span class="sector purple-time">28.01s 🟣</span></div>
+              <div class="col-s3"><span class="sector green-time">19.95s 🟢</span></div>
+              <div class="col-gap"><span class="gap-badge">+0.142s</span></div>
+              <div class="col-drs"><span class="drs-pill active">DRS ACTIVE</span></div>
+            </div>
+
+            <!-- LEADERBOARD ROW 3: DSA (Red Bull Livery - Aggressive Precision) -->
+            <div class="lb-row overtake-row-3 team-redbull">
+              <div class="col-pos"><span class="pos-num p3">P3</span></div>
+              <div class="col-gain"><span class="delta-gain up">▲ +1</span></div>
+              <div class="col-team">
+                <span class="team-stripe redbull-stripe"></span>
+                <div class="team-meta">
+                  <strong class="driver-name-code">DSA & ALGORITHMS</strong>
+                  <span class="constructor-sub">RED BULL RACING COMPLEXITY</span>
+                </div>
+              </div>
+              <div class="col-skill">
+                <span class="tech-chips">Time: O(log N)</span>
+                <span class="tech-chips">Graphs & Trees</span>
+                <span class="tech-chips">Dynamic Prog</span>
+                <span class="tech-chips">C++ & Java</span>
+                <span class="tech-chips highlight">LeetCode Grinder</span>
+              </div>
+              <div class="col-s1"><span class="sector purple-time">24.08s 🟣</span></div>
+              <div class="col-s2"><span class="sector green-time">28.12s 🟢</span></div>
+              <div class="col-s3"><span class="sector green-time">20.02s 🟢</span></div>
+              <div class="col-gap"><span class="gap-badge">+0.388s</span></div>
+              <div class="col-drs"><span class="drs-pill active">DRS ACTIVE</span></div>
+            </div>
+
+            <!-- LEADERBOARD ROW 4: VCS & GIT (McLaren Livery - Seamless Branching) -->
+            <div class="lb-row overtake-row-4 team-mclaren">
+              <div class="col-pos"><span class="pos-num p4">P4</span></div>
+              <div class="col-gain"><span class="delta-gain up">▲ +3</span></div>
+              <div class="col-team">
+                <span class="team-stripe mclaren-stripe"></span>
+                <div class="team-meta">
+                  <strong class="driver-name-code">VCS & DEVOPS</strong>
+                  <span class="constructor-sub">MCLAREN PAPAYA PITCREW</span>
+                </div>
+              </div>
+              <div class="col-skill">
+                <span class="tech-chips">Git Architecture</span>
+                <span class="tech-chips">GitHub Actions</span>
+                <span class="tech-chips">Docker</span>
+                <span class="tech-chips">CI/CD Pipelines</span>
+                <span class="tech-chips highlight">Trunk Branching</span>
+              </div>
+              <div class="col-s1"><span class="sector green-time">24.31s 🟢</span></div>
+              <div class="col-s2"><span class="sector green-time">28.25s 🟢</span></div>
+              <div class="col-s3"><span class="sector purple-time">19.92s 🟣</span></div>
+              <div class="col-gap"><span class="gap-badge">+0.690s</span></div>
+              <div class="col-drs"><span class="drs-pill armed">DRS ARMED</span></div>
+            </div>
+
+            <!-- LEADERBOARD ROW 5: SYSTEM DESIGN & CLOUD (Aston Martin) -->
+            <div class="lb-row overtake-row-5 team-aston">
+              <div class="col-pos"><span class="pos-num p5">P5</span></div>
+              <div class="col-gain"><span class="delta-gain equal">▬ 0</span></div>
+              <div class="col-team">
+                <span class="team-stripe aston-stripe"></span>
+                <div class="team-meta">
+                  <strong class="driver-name-code">SYSTEM DESIGN & AWS</strong>
+                  <span class="constructor-sub">ASTON MARTIN CLOUD WING</span>
+                </div>
+              </div>
+              <div class="col-skill">
+                <span class="tech-chips">Microservices</span>
+                <span class="tech-chips">Redis Cache</span>
+                <span class="tech-chips">Kafka Queues</span>
+                <span class="tech-chips">AWS S3/EC2</span>
+                <span class="tech-chips highlight">High-Throughput</span>
+              </div>
+              <div class="col-s1"><span class="sector normal-time">24.45s</span></div>
+              <div class="col-s2"><span class="sector green-time">28.30s 🟢</span></div>
+              <div class="col-s3"><span class="sector normal-time">20.15s</span></div>
+              <div class="col-gap"><span class="gap-badge">+1.120s</span></div>
+              <div class="col-drs"><span class="drs-pill disabled">IN DRS ZONE</span></div>
+            </div>
+
+            <!-- LEADERBOARD ROW 6: RETIRED / OUTPACED COMPETITORS (The Overtaken legacy!) -->
+            <div class="lb-row overtake-row-retired team-legacy">
+              <div class="col-pos"><span class="pos-num out">OUT</span></div>
+              <div class="col-gain"><span class="delta-gain down">▼ DNF</span></div>
+              <div class="col-team">
+                <span class="team-stripe legacy-stripe"></span>
+                <div class="team-meta">
+                  <strong class="driver-name-code">SLOW MONOLITHS & BUGS</strong>
+                  <span class="constructor-sub">OVERTAKEN & ELIMINATED</span>
+                </div>
+              </div>
+              <div class="col-skill">
+                <span class="tech-chips strikethrough">Memory Leaks</span>
+                <span class="tech-chips strikethrough">Spaghetti Code</span>
+                <span class="tech-chips strikethrough">Unindexed Queries</span>
+                <span class="tech-chips status-red">ENGINE BLOWN 💥</span>
+              </div>
+              <div class="col-s1"><span class="sector red-time">DNF</span></div>
+              <div class="col-s2"><span class="sector red-time">DNF</span></div>
+              <div class="col-s3"><span class="sector red-time">DNF</span></div>
+              <div class="col-gap"><span class="gap-badge dnf">OVERTAKEN</span></div>
+              <div class="col-drs"><span class="drs-pill disabled">OUT OF RACE</span></div>
+            </div>
+          </div>
+
+          <!-- Bottom Telemetry Radar Feed -->
+          <div class="tower-bottom-ticker">
+            <span class="blip-radar">🟢 DRS DETECTED: SPEED TRAP RECORD AT 348.6 KM/H ON MAIN STRAIGHT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: PROJECTS (F1 CONSTRUCTOR SCORECARDS) ==================== -->
+    <section id="projects" class="section f1-projects-section">
+      <!-- Background Livery: Red Bull Racing RB20 (Navy, Matte Yellow, Red) -->
+      <div class="car-livery-bg redbull-bg" aria-hidden="true">
+        <div class="livery-watermark">RED BULL // RB20</div>
+        <div class="f1-car-vector redbull-vector">
+          <svg viewBox="0 0 1200 350" class="car-svg">
+            <defs>
+              <linearGradient id="rbGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#061D33"/>
+                <stop offset="50%" stop-color="#0E2E4E"/>
+                <stop offset="80%" stop-color="#E10600"/>
+                <stop offset="100%" stop-color="#FFD700"/>
+              </linearGradient>
+            </defs>
+            <path d="M 120 150 C 300 130, 480 120, 700 135 L 980 180 C 1080 200, 1160 220, 1190 240 L 940 240 L 220 240 Z" fill="url(#rbGrad)"/>
+            <circle cx="300" cy="225" r="75" fill="#151515" stroke="#FFD700" stroke-width="6"/>
+            <circle cx="960" cy="225" r="75" fill="#151515" stroke="#FFD700" stroke-width="6"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="f1-container">
+        <!-- Section Title -->
+        <div class="f1-section-header">
+          <div class="f1-badge-wrap">
+            <span class="f1-tag-red">PIT WALL TELEMETRY & CONSTRUCTOR ARCHIVE</span>
+          </div>
+          <h2 class="f1-heading-title">ENGINEERED FLEET & SCORECARDS</h2>
+          <p class="f1-subheading">
+            Flagship software projects designed like championship-winning Formula 1 machinery. 
+            Telemetry scorecards slide in from the pit wall with complete technical dossiers.
+          </p>
+        </div>
+
+        <!-- Projects Container with Alternating Side Scorecards -->
+        <div class="scorecards-wrapper">
+
+          <!-- PROJECT 1: SLIDE IN FROM LEFT (Scuderia Ferrari Livery) -->
+          <article class="scorecard-item slide-from-left team-ferrari-card">
+            <!-- Side 1: Pitwall Scorecard Graphic -->
+            <div class="scorecard-visual">
+              <div class="scorecard-badge-header">
+                <span class="sc-team-flag">SCUDERIA LAB // #01</span>
+                <span class="sc-status-pill live-pill">DEPLOYED & TESTED</span>
+              </div>
+              <div class="scorecard-telemetry-display">
+                <div class="telemetry-hud-circle">
+                  <span class="hud-stat-num">0.08<small>s</small></span>
+                  <span class="hud-stat-lbl">API PITSTOP TIME</span>
+                </div>
+                <div class="telemetry-hud-metrics">
+                  <div class="metric-row">
+                    <span>DOWNFORCE (RPS)</span>
+                    <strong>12,400 Req/s</strong>
+                  </div>
+                  <div class="metric-row">
+                    <span>ENGINE DISPLACEMENT</span>
+                    <strong>PERN STACK</strong>
+                  </div>
+                  <div class="metric-row">
+                    <span>LAP RECORD TIME</span>
+                    <strong class="purple-time">1:14.28 🟣</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="telemetry-graph-bar">
+                <div class="graph-fill ferrari-fill" style="width: 92%;"></div>
+              </div>
+              <div class="scorecard-bottom-strip">
+                <span>CONSTRUCTOR POINTS: +25 PTS</span>
+                <span>P1 FINISH</span>
+              </div>
+            </div>
+
+            <!-- Side 2: Project Description and Technical Architecture -->
+            <div class="scorecard-content">
+              <div class="sc-project-num">CONSTRUCTOR SPECIFICATION 01</div>
+              <h3 class="sc-project-title">ApexTrade // Ultra-Low Latency Order Engine</h3>
+              <p class="sc-project-description">
+                Engineered an ultra-fast trading and portfolio analytics engine leveraging the <strong>PERN Stack</strong> (PostgreSQL, Express, React, Node.js). 
+                Built with connection pooling, Redis caching layers, and WebSockets for real-time order execution that mirrors an F1 pit-stop telemetry broadcast.
+              </p>
+              
+              <div class="sc-features-list">
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>Zero-Drag Database:</strong> Optimized indexing and materialized views reducing query latency by 78%.</span>
+                </div>
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>Live Telemetry HUD:</strong> Sub-50ms streaming price updates powered by WebSocket channels.</span>
+                </div>
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>ACID Transaction Pitcrew:</strong> Automated deadlock resolution and instant ledger verification.</span>
+                </div>
+              </div>
+
+              <div class="sc-tags-row">
+                <span class="f1-chip">PostgreSQL</span>
+                <span class="f1-chip">Express</span>
+                <span class="f1-chip">React.js</span>
+                <span class="f1-chip">Node.js</span>
+                <span class="f1-chip">Redis</span>
+                <span class="f1-chip">Docker</span>
+              </div>
+
+              <div class="sc-actions-row">
+                <a href="#contact" class="f1-action-btn primary-red">
+                  <span>ENTER COCKPIT</span>
+                  <span class="btn-arrow">→</span>
+                </a>
+                <a href="#contact" class="f1-action-btn secondary-ghost">
+                  <span>INSPECT SOURCE (VCS)</span>
+                  <span class="btn-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 2: SLIDE IN FROM RIGHT (Mercedes-AMG Petronas Livery) -->
+          <article class="scorecard-item slide-from-right team-mercedes-card">
+            <!-- Side 2: Project Description and Technical Architecture (Left side on desktop) -->
+            <div class="scorecard-content">
+              <div class="sc-project-num">CONSTRUCTOR SPECIFICATION 02</div>
+              <h3 class="sc-project-title">PetronasSync // Real-Time Collaboration & VCS Engine</h3>
+              <p class="sc-project-description">
+                A high-throughput collaborative developer platform built on the <strong>MERN Stack</strong>. 
+                Features live code sync, automated Git commit branching visualizations, and interactive code review gates that emulate race telemetry telemetry data streams.
+              </p>
+              
+              <div class="sc-features-list">
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>Aerodynamic Sync:</strong> Operational Transformation algorithm delivering conflict-free multi-user live editing.</span>
+                </div>
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>VCS Branch Radar:</strong> Interactive SVG visual tree of git branches with instant pull request diffing.</span>
+                </div>
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>Paddock Security:</strong> JWT stateless sessions, role-based access control, and encrypted vaults.</span>
+                </div>
+              </div>
+
+              <div class="sc-tags-row">
+                <span class="f1-chip">MongoDB</span>
+                <span class="f1-chip">Express.js</span>
+                <span class="f1-chip">React</span>
+                <span class="f1-chip">Node.js</span>
+                <span class="f1-chip">Socket.io</span>
+                <span class="f1-chip">Git VCS</span>
+              </div>
+
+              <div class="sc-actions-row">
+                <a href="#contact" class="f1-action-btn primary-teal">
+                  <span>ENTER COCKPIT</span>
+                  <span class="btn-arrow">→</span>
+                </a>
+                <a href="#contact" class="f1-action-btn secondary-ghost">
+                  <span>INSPECT SOURCE (VCS)</span>
+                  <span class="btn-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Side 1: Pitwall Scorecard Graphic -->
+            <div class="scorecard-visual">
+              <div class="scorecard-badge-header">
+                <span class="sc-team-flag">PETRONAS DEV // #44</span>
+                <span class="sc-status-pill teal-pill">POLE LAP ENGINE</span>
+              </div>
+              <div class="scorecard-telemetry-display">
+                <div class="telemetry-hud-circle teal-circle">
+                  <span class="hud-stat-num">99.9<small>%</small></span>
+                  <span class="hud-stat-lbl">RELIABILITY INDEX</span>
+                </div>
+                <div class="telemetry-hud-metrics">
+                  <div class="metric-row">
+                    <span>CONCURRENT RACERS</span>
+                    <strong>5,000+ Active</strong>
+                  </div>
+                  <div class="metric-row">
+                    <span>ENGINE CHASSIS</span>
+                    <strong>MERN + SOCKETS</strong>
+                  </div>
+                  <div class="metric-row">
+                    <span>TELEMETRY SPEED</span>
+                    <strong class="green-time">335 KM/H 🟢</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="telemetry-graph-bar">
+                <div class="graph-fill mercedes-fill" style="width: 96%;"></div>
+              </div>
+              <div class="scorecard-bottom-strip">
+                <span>CONSTRUCTOR POINTS: +18 PTS</span>
+                <span>P2 FINISH</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 3: SLIDE IN FROM LEFT (Red Bull Racing Livery) -->
+          <article class="scorecard-item slide-from-left team-redbull-card">
+            <!-- Side 1: Pitwall Scorecard Graphic -->
+            <div class="scorecard-visual">
+              <div class="scorecard-badge-header">
+                <span class="sc-team-flag">RED BULL ORACLE // #01</span>
+                <span class="sc-status-pill yellow-pill">DOMINANT SPRINT</span>
+              </div>
+              <div class="scorecard-telemetry-display">
+                <div class="telemetry-hud-circle yellow-circle">
+                  <span class="hud-stat-num">100<small>k</small></span>
+                  <span class="hud-stat-lbl">OPS PROCESSED/SEC</span>
+                </div>
+                <div class="telemetry-hud-metrics">
+                  <div class="metric-row">
+                    <span>AERODYNAMIC DRAG</span>
+                    <strong>ZERO OVERHEAD</strong>
+                  </div>
+                  <div class="metric-row">
+                    <span>ALGORITHM COMPLEXITY</span>
+                    <strong>O(1) HASH MAPPING</strong>
+                  </div>
+                  <div class="metric-row">
+                    <span>FASTEST SECTOR</span>
+                    <strong class="purple-time">PURPLE ALL THREE 🟣</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="telemetry-graph-bar">
+                <div class="graph-fill redbull-fill" style="width: 98%;"></div>
+              </div>
+              <div class="scorecard-bottom-strip">
+                <span>CONSTRUCTOR POINTS: +26 PTS</span>
+                <span>FASTEST LAP P1</span>
+              </div>
+            </div>
+
+            <!-- Side 2: Project Description -->
+            <div class="scorecard-content">
+              <div class="sc-project-num">CONSTRUCTOR SPECIFICATION 03</div>
+              <h3 class="sc-project-title">AeroSort // Visual Algorithmic Grid & DSA Telemetry</h3>
+              <p class="sc-project-description">
+                An interactive high-speed algorithmic visualizer simulating sorting, graph pathfinding (Dijkstra, A* Search), 
+                and tree balancing with real-time computational step telemetry. Designed to test and stress-test data structures 
+                under extreme loads like an F1 wind tunnel test.
+              </p>
+              
+              <div class="sc-features-list">
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>Wind Tunnel Visuals:</strong> Dynamic step-by-step memory frame rendering with zero dropped frames (60fps).</span>
+                </div>
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>Asymptotic Telemetry:</strong> Live graphing of Big-O spatial and temporal boundaries across test cases.</span>
+                </div>
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>Stress Testing Grid:</strong> Built-in benchmark harness generating 100,000 randomized elements.</span>
+                </div>
+              </div>
+
+              <div class="sc-tags-row">
+                <span class="f1-chip">DSA Algorithms</span>
+                <span class="f1-chip">JavaScript ES6+</span>
+                <span class="f1-chip">HTML5 Canvas</span>
+                <span class="f1-chip">Performance Profiling</span>
+                <span class="f1-chip">VCS</span>
+              </div>
+
+              <div class="sc-actions-row">
+                <a href="#contact" class="f1-action-btn primary-yellow">
+                  <span>ENTER COCKPIT</span>
+                  <span class="btn-arrow">→</span>
+                </a>
+                <a href="#contact" class="f1-action-btn secondary-ghost">
+                  <span>INSPECT SOURCE (VCS)</span>
+                  <span class="btn-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 4: SLIDE IN FROM RIGHT (McLaren Papaya Livery) -->
+          <article class="scorecard-item slide-from-right team-mclaren-card">
+            <!-- Side 2: Project Description -->
+            <div class="scorecard-content">
+              <div class="sc-project-num">CONSTRUCTOR SPECIFICATION 04</div>
+              <h3 class="sc-project-title">PapayaCloud // Microservices Dispatcher & API Paddock</h3>
+              <p class="sc-project-description">
+                A robust enterprise microservices gateway and dispatcher built for seamless container management and dynamic load distribution. 
+                Deploys automated health-checks and instant failover strategies that keep the digital car on track even in wet weather conditions.
+              </p>
+              
+              <div class="sc-features-list">
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>Pitstop Routing:</strong> Smart DNS and edge proxy routing incoming traffic to closest compute nodes.</span>
+                </div>
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>Full Telemetry Pipeline:</strong> Structured log ingestion, alert dispatchers, and Prometheus metrics.</span>
+                </div>
+                <div class="sc-feature-item">
+                  <span class="check-icon">✓</span>
+                  <span><strong>DevOps Pitcrew:</strong> Automated CI/CD pipeline building, testing, and shipping in under 3 minutes.</span>
+                </div>
+              </div>
+
+              <div class="sc-tags-row">
+                <span class="f1-chip">Node.js</span>
+                <span class="f1-chip">Docker</span>
+                <span class="f1-chip">PostgreSQL</span>
+                <span class="f1-chip">NGINX</span>
+                <span class="f1-chip">Git VCS</span>
+                <span class="f1-chip">AWS</span>
+              </div>
+
+              <div class="sc-actions-row">
+                <a href="#contact" class="f1-action-btn primary-orange">
+                  <span>ENTER COCKPIT</span>
+                  <span class="btn-arrow">→</span>
+                </a>
+                <a href="#contact" class="f1-action-btn secondary-ghost">
+                  <span>INSPECT SOURCE (VCS)</span>
+                  <span class="btn-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Side 1: Pitwall Scorecard Graphic -->
+            <div class="scorecard-visual">
+              <div class="scorecard-badge-header">
+                <span class="sc-team-flag">MCLAREN PAPAYA // #81</span>
+                <span class="sc-status-pill orange-pill">SURGING CONTENDER</span>
+              </div>
+              <div class="scorecard-telemetry-display">
+                <div class="telemetry-hud-circle orange-circle">
+                  <span class="hud-stat-num">3<small>min</small></span>
+                  <span class="hud-stat-lbl">FULL CI/CD PITSTOP</span>
+                </div>
+                <div class="telemetry-hud-metrics">
+                  <div class="metric-row">
+                    <span>MICROSERVICES CHASSIS</span>
+                    <strong>12 DOCKER PODS</strong>
+                  </div>
+                  <div class="metric-row">
+                    <span>FAILOVER TIME</span>
+                    <strong>&lt; 50 Milliseconds</strong>
+                  </div>
+                  <div class="metric-row">
+                    <span>SECTOR STATUS</span>
+                    <strong class="purple-time">ALL GREEN 🟢</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="telemetry-graph-bar">
+                <div class="graph-fill mclaren-fill" style="width: 90%;"></div>
+              </div>
+              <div class="scorecard-bottom-strip">
+                <span>CONSTRUCTOR POINTS: +15 PTS</span>
+                <span>P3 FINISH</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: ABOUT ME / DRIVER DOSSIER & ENTREPRENEUR ==================== -->
+    <section id="about" class="section f1-about-section">
+      <!-- Background Livery: McLaren MCL38 (Papaya & Anthracite) -->
+      <div class="car-livery-bg mclaren-bg" aria-hidden="true">
+        <div class="livery-watermark">MCLAREN // MCL38</div>
+        <div class="f1-car-vector mclaren-vector">
+          <svg viewBox="0 0 1200 350" class="car-svg">
+            <defs>
+              <linearGradient id="mclGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FF8000"/>
+                <stop offset="50%" stop-color="#FFA033"/>
+                <stop offset="75%" stop-color="#47C7FC"/>
+                <stop offset="100%" stop-color="#151515"/>
+              </linearGradient>
+            </defs>
+            <path d="M 120 150 C 300 130, 480 125, 700 140 L 980 185 C 1080 200, 1160 220, 1190 240 L 940 240 L 220 240 Z" fill="url(#mclGrad)"/>
+            <circle cx="300" cy="225" r="75" fill="#151515" stroke="#FF8000" stroke-width="6"/>
+            <circle cx="960" cy="225" r="75" fill="#151515" stroke="#FF8000" stroke-width="6"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="f1-container">
+        <!-- Section Title -->
+        <div class="f1-section-header">
+          <div class="f1-badge-wrap">
+            <span class="f1-tag-red">CONFIDENTIAL PADDOCK INTELLIGENCE</span>
+          </div>
+          <h2 class="f1-heading-title">THE DRIVER & ENTREPRENEURIAL DRIVE</h2>
+          <p class="f1-subheading">
+            Behind the steering wheel: a high-RPM problem solver bridging the gap between rigorous software engineering 
+            and scalable commercial ventures.
+          </p>
+        </div>
+
+        <!-- Cockpit & Entrepreneur Profile Bento Grid -->
+        <div class="about-bento-grid">
+          
+          <!-- Bento Box 1: Core Story & Vision -->
+          <div class="bento-card bento-main-story">
+            <div class="bento-header">
+              <span class="bento-badge">PILOT PHILOSOPHY</span>
+              <span class="bento-location">CIRCUIT: PUNE ⇄ DELHI</span>
+            </div>
+            <h3 class="bento-title">Aerodynamic Code with Relentless Velocity</h3>
+            <p class="bento-text">
+              In Formula 1, ten milliseconds is the razor-thin margin between pole position and midfield obscurity. 
+              I treat every line of code with that exact aerodynamic obsession. Whether shaving database query latencies 
+              with <strong>PostgreSQL indexing</strong>, decoupling state management in <strong>React</strong>, or designing tight 
+              <strong>Node.js and Express</strong> services, my objective is zero drag and maximum throughput.
+            </p>
+            <p class="bento-text">
+              As an <strong>aspiring entrepreneur</strong> based out of the vibrant tech corridors of <strong>Pune and Delhi</strong>, 
+              I am driven by the thrill of building things that move from 0 to 100 km/h in record time. I view software not just 
+              as code, but as high-performance commercial engines that power real business breakthroughs.
+            </p>
+            <div class="entrepreneur-quote-box">
+              <span class="quote-sign">“</span>
+              <p>“You don’t win championships by cruising on the straights. You win them by braking later, turning with precision, and accelerating out of every technical hairpin.”</p>
+              <span class="quote-author">— Heyak // Full-Stack Engineer & Founder</span>
+            </div>
+          </div>
+
+          <!-- Bento Box 2: Driver Biometrics / Stats Card -->
+          <div class="bento-card bento-biometrics">
+            <div class="bento-header">
+              <span class="bento-badge">TELEMETRY BIOMETRICS</span>
+            </div>
+            <div class="biometric-items">
+              <div class="bio-item">
+                <span class="bio-label">BASE PADDOCK</span>
+                <strong class="bio-val">Pune / Delhi, India 🇮🇳</strong>
+              </div>
+              <div class="bio-item">
+                <span class="bio-label">ENGINEERING DISCIPLINE</span>
+                <strong class="bio-val">Full-Stack (MERN & PERN)</strong>
+              </div>
+              <div class="bio-item">
+                <span class="bio-label">ALGORITHMIC AGILITY</span>
+                <strong class="bio-val">DSA & Time-Space Optimization</strong>
+              </div>
+              <div class="bio-item">
+                <span class="bio-label">VERSION CONTROL</span>
+                <strong class="bio-val">Git, CI/CD, Micro-commit Branching</strong>
+              </div>
+              <div class="bio-item">
+                <span class="bio-label">ENTREPRENEURIAL FOCUS</span>
+                <strong class="bio-val">B2B SaaS, Real-Time Platforms, Dev Tools</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Box 3: What I've Done (Track Record) -->
+          <div class="bento-card bento-track-record">
+            <div class="bento-header">
+              <span class="bento-badge">PODIUM TRACK RECORD</span>
+            </div>
+            <h4 class="bento-card-sub">Key Milestones & Executions</h4>
+            <ul class="track-record-list">
+              <li>
+                <span class="flag-trophy">🏆</span>
+                <div>
+                  <strong>Architected Full-Stack Engines:</strong> Deployed end-to-end MERN & PERN platforms processing thousands of concurrent user queries.
+                </div>
+              </li>
+              <li>
+                <span class="flag-trophy">⚡</span>
+                <div>
+                  <strong>Algorithmic Mastery:</strong> Solved hundreds of complex DSA problems across graphs, dynamic programming, and data structures.
+                </div>
+              </li>
+              <li>
+                <span class="flag-trophy">🏎️</span>
+                <div>
+                  <strong>High-Speed Pit Stops (VCS):</strong> Built robust Git CI/CD automated deployment pipelines with zero downtime releases.
+                </div>
+              </li>
+              <li>
+                <span class="flag-trophy">🚀</span>
+                <div>
+                  <strong>Founder's Mindset:</strong> Validated startup ideas, conducted user discovery, designed MVPs, and mapped go-to-market strategies.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bento Box 4: The Garage & Tooling -->
+          <div class="bento-card bento-garage">
+            <div class="bento-header">
+              <span class="bento-badge">THE PIT GARAGE</span>
+            </div>
+            <h4 class="bento-card-sub">Ready to Build</h4>
+            <p class="garage-desc">
+              Equipped with modern engineering tooling, relentless curiosity, and an ambition to co-found or steer category-defining startups.
+            </p>
+            <div class="garage-compounds">
+              <div class="compound-tag soft-tag">
+                <span class="compound-dot red"></span> SOFT TYRE: Rapid 48hr Prototyping
+              </div>
+              <div class="compound-tag med-tag">
+                <span class="compound-dot yellow"></span> MEDIUM TYRE: Robust Production Architecture
+              </div>
+              <div class="compound-tag hard-tag">
+                <span class="compound-dot white"></span> HARD TYRE: Scalable High-Load Infrastructure
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: EXPERIENCE (GRAND PRIX SEASONS) ==================== -->
+    <section id="experience" class="section f1-experience-section">
+      <!-- Background Livery: Scuderia Ferrari / Carbon Checkered Flag -->
+      <div class="carbon-checkered-stripes" aria-hidden="true"></div>
+
+      <div class="f1-container">
+        <!-- Section Header -->
+        <div class="f1-section-header">
+          <div class="f1-badge-wrap">
+            <span class="f1-tag-red">F1 CAREER STINTS & CHAMPIONSHIP SEASONS</span>
+          </div>
+          <h2 class="f1-heading-title">RACING EXPERIENCE & CAREER LAPS</h2>
+          <p class="f1-subheading">
+            A chronological timeline of championship stints, technical pit stops, and engineering positions held 
+            across major software circuits.
+          </p>
+        </div>
+
+        <!-- Experience Timeline -->
+        <div class="experience-timeline">
+
+          <!-- Season 1 -->
+          <div class="timeline-stint">
+            <div class="stint-badge-col">
+              <div class="stint-year">SEASON 2024 - 2026</div>
+              <div class="stint-tyre">
+                <span class="tyre-circle soft">S</span>
+                <span class="tyre-strat">STINT 1: SOFT COMPOUND</span>
+              </div>
+            </div>
+            <div class="stint-marker">
+              <div class="marker-point"></div>
+              <div class="marker-line"></div>
+            </div>
+            <div class="stint-card team-ferrari-stint">
+              <div class="stint-card-header">
+                <div class="stint-role-group">
+                  <h3 class="stint-role">Lead Full-Stack Engineer & Product Builder</h3>
+                  <span class="stint-team">TECH PADDOCK // PUNE & DELHI CORRIDOR</span>
+                </div>
+                <span class="stint-pos-badge">P1 DRIVER</span>
+              </div>
+              <p class="stint-description">
+                Spearheaded the design and deployment of enterprise-grade MERN and PERN applications. 
+                Led architectural sprints, orchestrated continuous integration workflows using Git VCS, and reduced server response times by 40% through intelligent query caching.
+              </p>
+              <div class="stint-telemetry-chips">
+                <span class="chip">React 19</span>
+                <span class="chip">Node.js</span>
+                <span class="chip">PostgreSQL</span>
+                <span class="chip">MongoDB</span>
+                <span class="chip">Docker</span>
+                <span class="chip">VCS Branching</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Season 2 -->
+          <div class="timeline-stint">
+            <div class="stint-badge-col">
+              <div class="stint-year">SEASON 2023 - 2024</div>
+              <div class="stint-tyre">
+                <span class="tyre-circle medium">M</span>
+                <span class="tyre-strat">STINT 2: MEDIUM COMPOUND</span>
+              </div>
+            </div>
+            <div class="stint-marker">
+              <div class="marker-point"></div>
+              <div class="marker-line"></div>
+            </div>
+            <div class="stint-card team-mercedes-stint">
+              <div class="stint-card-header">
+                <div class="stint-role-group">
+                  <h3 class="stint-role">Full-Stack Developer & Systems Contender</h3>
+                  <span class="stint-team">HIGH VELOCITY SOFTWARE LABS</span>
+                </div>
+                <span class="stint-pos-badge">PODIUM FINISH</span>
+              </div>
+              <p class="stint-description">
+                Constructed modular REST APIs, designed responsive frontend interfaces, and implemented automated end-to-end testing pipelines. 
+                Collaborated closely in agile scrums with cross-functional product teams to deliver high-converting user interfaces and scalable databases.
+              </p>
+              <div class="stint-telemetry-chips">
+                <span class="chip">Express.js</span>
+                <span class="chip">PostgreSQL</span>
+                <span class="chip">REST APIs</span>
+                <span class="chip">Git & GitHub</span>
+                <span class="chip">CSS3 Animations</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Season 3 -->
+          <div class="timeline-stint">
+            <div class="stint-badge-col">
+              <div class="stint-year">SEASON 2022 - 2023</div>
+              <div class="stint-tyre">
+                <span class="tyre-circle hard">H</span>
+                <span class="tyre-strat">STINT 3: HARD COMPOUND</span>
+              </div>
+            </div>
+            <div class="stint-marker">
+              <div class="marker-point"></div>
+              <div class="marker-line"></div>
+            </div>
+            <div class="stint-card team-redbull-stint">
+              <div class="stint-card-header">
+                <div class="stint-role-group">
+                  <h3 class="stint-role">Algorithmic Systems & Junior Software Driver</h3>
+                  <span class="stint-team">ALGORITHMIC ACADEMY & FOUNDATIONAL LAB</span>
+                </div>
+                <span class="stint-pos-badge">FASTEST ROOKIE LAP</span>
+              </div>
+              <p class="stint-description">
+                Deep-dived into foundational Data Structures and Algorithms (DSA), time/space complexity analysis, 
+                and core web standards (HTML5, modern CSS, vanilla JavaScript). Competed in hackathons and algorithmic sprints, securing top ranks.
+              </p>
+              <div class="stint-telemetry-chips">
+                <span class="chip">DSA Mastery</span>
+                <span class="chip">C++ / JavaScript</span>
+                <span class="chip">Algorithms</span>
+                <span class="chip">Web Standards</span>
+                <span class="chip">Competitive Coding</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 6: CONTACT DETAILS & EMAIL SEARCH DISPATCH BAR ==================== -->
+    <section id="contact" class="section f1-contact-section">
+      <div class="f1-container">
+        <!-- Section Header -->
+        <div class="f1-section-header">
+          <div class="f1-badge-wrap">
+            <span class="f1-tag-red">PIT-TO-CAR RADIO FREQUENCY // 450.250 MHz</span>
+          </div>
+          <h2 class="f1-heading-title">CONNECT TO PITWALL & TRANSMIT</h2>
+          <p class="f1-subheading">
+            Direct radio transmission link. Looking for a high-performance Full-Stack Engineer, startup co-founder, 
+            or technical visionary? Type your query or email below to initiate team comms.
+          </p>
+        </div>
+
+        <!-- F1 Pit Radio Dispatch Console -->
+        <div class="radio-console-card">
+          <div class="console-curb top-curb"></div>
+
+          <div class="console-hud-top">
+            <div class="hud-channel">
+              <span class="radio-waves-icon">📶</span>
+              <span>COMMUNICATION CHANNEL: <strong>HEYAK_RADIO_GRID_01</strong></span>
+            </div>
+            <div class="hud-status-active">
+              <span class="blink-dot"></span> LIVE TRANSMISSION ACTIVE
+            </div>
+          </div>
+
+          <!-- Interactive Search & Email Dispatch Bar -->
+          <div class="dispatch-bar-container">
+            <div class="dispatch-label-text">
+              <span class="terminal-prompt">&gt;</span> ENTER PIT COMM OR SEARCH DISPATCH TO TRANSMIT EMAIL:
+            </div>
+            
+            <form action="mailto:contact@heyak.dev" method="GET" class="f1-search-dispatch-form">
+              <div class="search-input-wrapper">
+                <span class="search-scope-icon">🔍</span>
+                <input 
+                  type="text" 
+                  name="subject" 
+                  class="f1-search-input" 
+                  placeholder="Enter message topic or inquiry (e.g. 'Project Collaboration / Startup Venture')..." 
+                  required
+                >
+                <input 
+                  type="hidden" 
+                  name="body" 
+                  value="Hello Heyak, I reviewed your F1 Portfolio and would love to connect with you regarding an opportunity in Pune / Delhi."
+                >
+              </div>
+              <button type="submit" class="f1-transmit-btn">
+                <span class="btn-text">TRANSMIT EMAIL</span>
+                <span class="btn-f1-arrow">🏎️ 💨</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Paddock Information & Coordinates -->
+          <div class="paddock-contact-grid">
+            
+            <!-- Card 1: Home Circuit -->
+            <div class="contact-tele-box">
+              <div class="c-box-icon">📍</div>
+              <div class="c-box-data">
+                <span class="c-label">HOME BASE / CIRCUIT</span>
+                <strong class="c-val">PUNE / DELHI, INDIA</strong>
+                <span class="c-sub">Available for Remote & On-Site Grids</span>
+              </div>
+            </div>
+
+            <!-- Card 2: Transmission Direct -->
+            <div class="contact-tele-box">
+              <div class="c-box-icon">✉️</div>
+              <div class="c-box-data">
+                <span class="c-label">DIRECT PITWALL EMAIL</span>
+                <a href="mailto:heyak.dev@gmail.com" class="c-val-link">heyak.dev@gmail.com</a>
+                <span class="c-sub">Response Time: &lt; 2 Race Laps</span>
+              </div>
+            </div>
+
+            <!-- Card 3: Status -->
+            <div class="contact-tele-box">
+              <div class="c-box-icon">🏁</div>
+              <div class="c-box-data">
+                <span class="c-label">GRID STATUS</span>
+                <strong class="c-val green-text">OPEN FOR OPPORTUNITIES</strong>
+                <span class="c-sub">Full-Stack Roles &amp; Startup Ventures</span>
+              </div>
+            </div>
+
+            <!-- Card 4: Social Paddock Channels -->
+            <div class="contact-tele-box">
+              <div class="c-box-icon">🌐</div>
+              <div class="c-box-data">
+                <span class="c-label">PADDOCK SOCIALS</span>
+                <div class="social-paddock-links">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-pill">GitHub</a>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-pill">LinkedIn</a>
+                  <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-pill">Twitter / X</a>
+                  <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" class="social-pill">LeetCode</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Console Warning / Checkered Banner -->
+          <div class="console-footer-banner">
+            <div class="checkered-pattern"></div>
+            <div class="footer-quote">
+              CHECKERED FLAG // VICTORY IS ENGINEERED BEFORE THE RACE EVEN BEGINS
+            </div>
+            <div class="checkered-pattern"></div>
+          </div>
+          <div class="console-curb bottom-curb"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== F1 FOOTER ==================== -->
+  <footer class="f1-footer">
+    <div class="f1-container footer-inner">
+      <div class="footer-brand">
+        <span class="f1-red-logo">F1</span>
+        <span>PORTFOLIO // ENGINEERED WITH HTML5 &amp; CSS3 ONLY</span>
+      </div>
+      <div class="footer-center">
+        <span>BASED IN PUNE / DELHI, INDIA</span>
+        <span class="bull-sep">•</span>
+        <span>SCUDERIA VELOCITY</span>
+      </div>
+      <div class="footer-right">
+        <a href="#driver" class="back-to-grid-btn">
+          <span>BACK TO POLE POSITION</span>
+          <span>▲</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

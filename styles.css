@@ -1,0 +1,2921 @@
+/* ==========================================================================
+   F1 GRAND PRIX PORTFOLIO - MASTER STYLESHEET
+   100% PURE HTML5 & CSS3 - NO JAVASCRIPT REQUIRED
+   Theme: Formula 1 Racing (Ferrari, Mercedes, Red Bull, McLaren)
+   ========================================================================== */
+
+/* --- CSS Variables & Team Liveries --- */
+:root {
+  /* Official F1 Core Palette */
+  --f1-red: #E10600;
+  --f1-red-dark: #B30000;
+  --f1-black: #0E0E10;
+  --f1-dark-carbon: #121216;
+  --f1-card-bg: rgba(22, 22, 28, 0.88);
+  --f1-card-border: rgba(255, 255, 255, 0.1);
+  --f1-white: #FFFFFF;
+  --f1-silver: #D2D2D7;
+  --f1-gray: #8E8E93;
+
+  /* Telemetry Status Colors */
+  --telemetry-purple: #B15BFF;
+  --telemetry-purple-glow: rgba(177, 91, 255, 0.5);
+  --telemetry-green: #00E676;
+  --telemetry-green-glow: rgba(0, 230, 118, 0.5);
+  --telemetry-yellow: #FFD600;
+  --telemetry-drs: #00FF66;
+
+  /* Constructor Liveries */
+  /* Scuderia Ferrari */
+  --ferrari-red: #E8002D;
+  --ferrari-accent: #FFF200;
+  --ferrari-glow: rgba(232, 0, 45, 0.4);
+
+  /* Mercedes-AMG Petronas */
+  --mercedes-teal: #00A19B;
+  --mercedes-teal-bright: #00D2BE;
+  --mercedes-silver: #E1E1E1;
+  --mercedes-glow: rgba(0, 210, 190, 0.4);
+
+  /* Red Bull Racing */
+  --redbull-navy: #061D33;
+  --redbull-red: #E10600;
+  --redbull-yellow: #FFD700;
+  --redbull-glow: rgba(255, 215, 0, 0.35);
+
+  /* McLaren */
+  --mclaren-papaya: #FF8000;
+  --mclaren-blue: #47C7FC;
+  --mclaren-glow: rgba(255, 128, 0, 0.4);
+
+  /* Aston Martin */
+  --aston-green: #00594F;
+  --aston-lime: #CEDC00;
+
+  /* Fonts */
+  --font-f1: 'Titillium Web', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-hud: 'Orbitron', monospace;
+  --font-tech: 'Chakra Petch', sans-serif;
+
+  /* Layout */
+  --container-max: 1280px;
+  --nav-height: 82px;
+  --ticker-height: 38px;
+}
+
+/* --- Global Reset & Box Sizing --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + var(--ticker-height) + 20px);
+  font-size: 16px;
+  background-color: var(--f1-black);
+  color: var(--f1-silver);
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-f1);
+  min-height: 100vh;
+  line-height: 1.6;
+  background: var(--f1-black);
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Accessibility helper */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.f1-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Section Formatting --- */
+.section {
+  position: relative;
+  padding: 7rem 0 6rem 0;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Section Header Typography */
+.f1-section-header {
+  margin-bottom: 3.5rem;
+  text-align: left;
+}
+
+.f1-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.f1-tag-red {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--f1-red), #ff3b30);
+  color: #fff;
+  font-family: var(--font-hud);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 2px;
+  box-shadow: 0 0 16px rgba(225, 6, 0, 0.5);
+  transform: skewX(-12deg);
+}
+
+.live-pulse-radar {
+  width: 9px;
+  height: 9px;
+  background-color: var(--telemetry-green);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7);
+  animation: radarPulse 1.8s infinite;
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.8); }
+  70% { transform: scale(1.3); box-shadow: 0 0 0 10px rgba(0, 230, 118, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+}
+
+.f1-heading-title {
+  font-family: var(--font-f1);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 900;
+  font-style: italic;
+  color: var(--f1-white);
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1.08;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.f1-subheading {
+  font-size: 1.15rem;
+  color: #a0a0aa;
+  max-width: 780px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   TOP TELEMETRY TICKER & F1 RACE CONTROL STRIP
+   ========================================================================== */
+.f1-ticker-strip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--ticker-height);
+  background: rgba(10, 10, 12, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+}
+
+.ticker-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.f1-live-badge {
+  background: var(--f1-red);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.blink-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  animation: blinkFast 1s infinite alternate;
+}
+
+@keyframes blinkFast {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
+
+.ticker-event {
+  color: #e4e4e7;
+  font-weight: 600;
+}
+
+.ticker-center {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.track-status.green {
+  color: var(--telemetry-green);
+  font-weight: 700;
+  text-shadow: 0 0 8px var(--telemetry-green-glow);
+}
+
+.purple-time {
+  color: var(--telemetry-purple);
+  font-weight: 700;
+  text-shadow: 0 0 8px var(--telemetry-purple-glow);
+}
+
+.green-time {
+  color: var(--telemetry-green);
+  font-weight: 700;
+  text-shadow: 0 0 8px var(--telemetry-green-glow);
+}
+
+.drs-enabled {
+  color: var(--telemetry-drs);
+  font-weight: 700;
+  background: rgba(0, 255, 102, 0.15);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+  border: 1px solid var(--telemetry-drs);
+}
+
+.ticker-right .radio-pill-btn {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #d1d5db;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.ticker-right .radio-pill-btn:hover {
+  background: var(--f1-red);
+  color: #fff;
+  border-color: var(--f1-red);
+}
+
+/* ==========================================================================
+   ROLLING PIRELLI TYRE NAVBAR (PURE CSS ANIMATION)
+   The tyre rolls into view from off-screen left, rotates 720deg, and
+   the navigation bar unfurls / reveals outwards from the rolling wheel!
+   ========================================================================== */
+.f1-nav-wrapper {
+  position: fixed;
+  top: var(--ticker-height);
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 999;
+  background: linear-gradient(180deg, rgba(14, 14, 18, 0.96) 0%, rgba(14, 14, 18, 0.88) 100%);
+  backdrop-filter: blur(14px);
+  border-bottom: 2px solid rgba(225, 6, 0, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+.tyre-nav-container {
+  max-width: var(--container-max);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* The Pirelli Wheel Assembly */
+.rolling-wheel-assembly {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  flex-shrink: 0;
+  z-index: 10;
+  /* CSS Rolling Wheel Animation on page load */
+  animation: tyreRollIn 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  cursor: pointer;
+}
+
+/* Rolling Tyre Animation: translations & rotations */
+@keyframes tyreRollIn {
+  0% {
+    transform: translateX(-160px) rotate(-720deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(6px) rotate(15deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Pirelli Tyre Wheel Geometry */
+.tyre-tread {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #252528 20%, #151518 70%, #0a0a0c 100%);
+  border: 4px solid #1c1c20;
+  box-shadow: 
+    0 0 0 2px #0a0a0a,
+    0 0 18px rgba(0, 0, 0, 0.8),
+    inset 0 0 8px rgba(0, 0, 0, 0.9);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.rolling-wheel-assembly:hover .tyre-tread {
+  transform: rotate(360deg) scale(1.08);
+}
+
+/* Yellow Pirelli P-Zero Soft Compound Sidewall */
+.tyre-wall.yellow-compound {
+  width: 86%;
+  height: 86%;
+  border-radius: 50%;
+  border: 3.5px solid var(--telemetry-yellow);
+  box-shadow: 0 0 8px rgba(255, 214, 0, 0.6);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tyre-brand {
+  position: absolute;
+  font-family: var(--font-hud);
+  font-size: 5px;
+  font-weight: 900;
+  color: var(--telemetry-yellow);
+  letter-spacing: 0.5px;
+}
+
+.tyre-brand.top {
+  top: 1px;
+}
+
+.tyre-brand.bottom {
+  bottom: 1px;
+}
+
+.tyre-compound {
+  position: absolute;
+  font-family: var(--font-tech);
+  font-size: 5px;
+  font-weight: 700;
+  color: #ffffff;
+  left: 2px;
+}
+
+/* Center OZ Racing Magnesium Alloy Rim */
+.alloy-rim {
+  width: 54%;
+  height: 54%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2a2a30 0%, #121215 100%);
+  border: 2px solid #555560;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spoke {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: #777785;
+}
+
+.spoke-1 { transform: rotate(0deg); }
+.spoke-2 { transform: rotate(72deg); }
+.spoke-3 { transform: rotate(144deg); }
+.spoke-4 { transform: rotate(216deg); }
+.spoke-5 { transform: rotate(288deg); }
+
+/* Center Locking Wheel Nut (Ferrari Red) */
+.center-lock.red-nut {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff3b30 0%, #b30000 100%);
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 6px rgba(255, 59, 48, 0.8);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lock-pin {
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* Smoke & Skid FX behind wheel */
+.tyre-smoke-trail {
+  position: absolute;
+  bottom: -4px;
+  left: -20px;
+  width: 30px;
+  height: 14px;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  filter: blur(4px);
+  opacity: 0;
+  animation: smokeFade 1.6s ease-out forwards;
+}
+
+.skid-mark {
+  position: absolute;
+  bottom: -6px;
+  left: -120px;
+  width: 130px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.8), #111);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+@keyframes smokeFade {
+  0% { opacity: 0.8; transform: scale(0.6); }
+  60% { opacity: 0.4; transform: scale(1.4); }
+  100% { opacity: 0; transform: scale(2); }
+}
+
+/* ==========================================================================
+   THE NAVBAR UNFURLING FROM THE TYRE (CSS CLIP-PATH EXPANSION)
+   ========================================================================== */
+.f1-navbar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 1.5rem;
+  /* Nav bar unrolls right behind the tyre roll */
+  animation: navUnfurl 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+}
+
+@keyframes navUnfurl {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-menu-burger {
+  display: none;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.f1-car-logo {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 8px rgba(225, 6, 0, 0.8));
+}
+
+.driver-tag {
+  font-family: var(--font-hud);
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: 2px;
+  color: var(--f1-white);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.driver-num-tag {
+  background: var(--f1-red);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 900;
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+  transform: skewX(-10deg);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.4rem;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-step {
+  color: var(--f1-red);
+  font-size: 0.8rem;
+  font-family: var(--font-hud);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--f1-red);
+  transition: width 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 0 8px var(--f1-red);
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link-cta {
+  background: linear-gradient(135deg, rgba(225, 6, 0, 0.2), rgba(225, 6, 0, 0.05));
+  border: 1px solid var(--f1-red);
+  border-radius: 4px;
+  padding: 0.45rem 1rem !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px rgba(225, 6, 0, 0.3);
+  transform: skewX(-8deg);
+  transition: all 0.3s ease;
+}
+
+.nav-link-cta span {
+  transform: skewX(8deg);
+}
+
+.nav-link-cta:hover {
+  background: var(--f1-red);
+  box-shadow: 0 0 24px rgba(225, 6, 0, 0.7);
+  transform: skewX(-8deg) translateY(-2px);
+}
+
+/* ==========================================================================
+   DYNAMIC F1 CAR LIVERIES & BACKGROUND SCROLL BACKDROP
+   As you scroll through sections, Ferrari, Mercedes, Red Bull, McLaren emerge
+   ========================================================================== */
+.dynamic-f1-backdrop {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.backdrop-gradient {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(232, 0, 45, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 60%, rgba(0, 161, 155, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(255, 128, 0, 0.06) 0%, transparent 40%),
+    linear-gradient(180deg, #0a0a0c 0%, #101014 100%);
+}
+
+.carbon-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(45deg, rgba(255, 255, 255, 0.015) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.015) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.015) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.015) 75%);
+  background-size: 8px 8px;
+  opacity: 0.7;
+}
+
+/* Racing Speed Lines */
+.speed-lines-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.speed-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: speedLineRush 6s infinite linear;
+}
+
+.line-1 { top: 22%; width: 45%; left: -50%; animation-delay: 0s; }
+.line-2 { top: 48%; width: 70%; left: -75%; animation-delay: 2.1s; }
+.line-3 { top: 68%; width: 55%; left: -60%; animation-delay: 4.2s; }
+.line-4 { top: 85%; width: 35%; left: -40%; animation-delay: 1.2s; }
+.line-5 { top: 12%; width: 60%; left: -65%; animation-delay: 3.5s; }
+
+@keyframes speedLineRush {
+  0% { transform: translateX(0); opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { transform: translateX(250vw); opacity: 0; }
+}
+
+/* Per-Section Background F1 Car Vectors & Liveries */
+.car-livery-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0.28;
+  transition: opacity 0.5s ease;
+}
+
+.livery-watermark {
+  position: absolute;
+  right: -2rem;
+  top: 15%;
+  font-family: var(--font-hud);
+  font-size: clamp(3rem, 9vw, 8rem);
+  font-weight: 900;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.04);
+  letter-spacing: 8px;
+  user-select: none;
+  transform: rotate(-4deg);
+}
+
+.f1-car-vector {
+  position: absolute;
+  bottom: 0;
+  right: -5%;
+  width: 65%;
+  max-width: 900px;
+  filter: drop-shadow(0 0 35px rgba(0, 0, 0, 0.9));
+  transform: skewX(-6deg);
+}
+
+.car-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Specific Section Color Atmospheres */
+.ferrari-bg {
+  background: radial-gradient(circle at 85% 65%, rgba(232, 0, 45, 0.16) 0%, transparent 60%);
+}
+
+.mercedes-bg {
+  background: radial-gradient(circle at 85% 65%, rgba(0, 161, 155, 0.16) 0%, transparent 60%);
+}
+
+.redbull-bg {
+  background: radial-gradient(circle at 85% 65%, rgba(225, 6, 0, 0.12) 0%, rgba(6, 29, 51, 0.2) 40%, transparent 70%);
+}
+
+.mclaren-bg {
+  background: radial-gradient(circle at 85% 65%, rgba(255, 128, 0, 0.16) 0%, transparent 60%);
+}
+
+/* Red & White Racing Curb Elements */
+.card-racing-curb,
+.console-curb {
+  height: 8px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--f1-red) 0px,
+    var(--f1-red) 24px,
+    #ffffff 24px,
+    #ffffff 48px
+  );
+  box-shadow: 0 0 10px rgba(225, 6, 0, 0.4);
+}
+
+.top-curb {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.bottom-curb {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* ==========================================================================
+   SECTION 1: F1 DRIVER PROFILE CARD (PRE-RACE GRID FORMAT)
+   ========================================================================== */
+.f1-driver-section {
+  padding-top: 5rem;
+}
+
+/* Starting Gantry with 5 Red Lights sequence */
+.starting-gantry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.2rem;
+}
+
+.gantry-light-unit {
+  background: #09090b;
+  border: 2px solid #27272a;
+  border-radius: 30px;
+  padding: 0.5rem 1.4rem;
+  display: flex;
+  gap: 1.2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), inset 0 2px 6px #000;
+}
+
+.gantry-light-unit .light {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #2a1111;
+  border: 2px solid #1a1a1e;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Lights sequence animation: lights turn red 1-by-1, hold, then extinguish! */
+.red-1 { animation: f1LightSequence 4.5s infinite; animation-delay: 0.4s; }
+.red-2 { animation: f1LightSequence 4.5s infinite; animation-delay: 0.8s; }
+.red-3 { animation: f1LightSequence 4.5s infinite; animation-delay: 1.2s; }
+.red-4 { animation: f1LightSequence 4.5s infinite; animation-delay: 1.6s; }
+.red-5 { animation: f1LightSequence 4.5s infinite; animation-delay: 2.0s; }
+
+@keyframes f1LightSequence {
+  0% { background: #2a1111; box-shadow: none; }
+  10%, 65% { 
+    background: #ff1100; 
+    box-shadow: 0 0 20px #ff2200, 0 0 35px #ff0000; 
+  }
+  75%, 100% { 
+    background: #2a1111; 
+    box-shadow: none; 
+  }
+}
+
+.gantry-text {
+  margin-top: 0.7rem;
+  font-family: var(--font-hud);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: #d1d5db;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* F1 TV Broadcast Driver Profile Card */
+.driver-broadcast-card {
+  background: var(--f1-card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--f1-card-border);
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  position: relative;
+}
+
+.driver-card-header {
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, rgba(232, 0, 45, 0.15), transparent 70%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.f1-official-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.fia-logo {
+  background: #fff;
+  color: #000;
+  font-family: var(--font-hud);
+  font-weight: 900;
+  font-size: 0.8rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+}
+
+.driver-season {
+  font-family: var(--font-tech);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #e4e4e7;
+}
+
+.starting-grid-pos {
+  font-family: var(--font-hud);
+  font-size: 0.88rem;
+  font-weight: 900;
+  color: var(--telemetry-yellow);
+  background: rgba(255, 214, 0, 0.12);
+  border: 1px solid var(--telemetry-yellow);
+  padding: 0.3rem 0.8rem;
+  border-radius: 2px;
+  transform: skewX(-10deg);
+}
+
+.driver-card-body {
+  padding: 2.5rem 2rem;
+  display: grid;
+  grid-template-columns: 160px 1fr 280px;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+/* Column 1: Big Driver Number & Helmet */
+.driver-num-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.driver-mega-number {
+  font-family: var(--font-hud);
+  font-size: clamp(4.5rem, 8vw, 6.5rem);
+  font-weight: 900;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 0.85;
+  letter-spacing: -3px;
+  text-shadow: 
+    0 0 20px rgba(232, 0, 45, 0.8),
+    0 0 40px rgba(232, 0, 45, 0.4);
+  position: relative;
+}
+
+.driver-mega-number::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 10%;
+  width: 80%;
+  height: 4px;
+  background: var(--ferrari-red);
+}
+
+.driver-helmet-badge {
+  margin-top: 1.5rem;
+  width: 100px;
+  height: 75px;
+  background: linear-gradient(135deg, #1f1f25, #0c0c0e);
+  border: 2px solid #3f3f46;
+  border-radius: 40px 40px 12px 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.helmet-visor {
+  width: 68px;
+  height: 22px;
+  background: linear-gradient(90deg, #111 0%, #38bdf8 50%, #111 100%);
+  border-radius: 6px;
+  margin-top: 18px;
+  border: 1px solid #7dd3fc;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+}
+
+.helmet-stripes {
+  position: absolute;
+  top: 4px;
+  display: flex;
+  gap: 2px;
+}
+
+.tri-color {
+  width: 8px;
+  height: 4px;
+  border-radius: 1px;
+}
+.tri-color.saffron { background: #FF9933; }
+.tri-color.white { background: #FFFFFF; }
+.tri-color.green { background: #138808; }
+
+.driver-helmet-label {
+  position: absolute;
+  bottom: 4px;
+  font-family: var(--font-hud);
+  font-size: 8px;
+  color: #a1a1aa;
+}
+
+/* Column 2: Driver Identity & Telemetry */
+.driver-country-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.flag-icon {
+  font-size: 1.5rem;
+}
+
+.country-name {
+  font-family: var(--font-hud);
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.circuit-home {
+  font-family: var(--font-tech);
+  font-size: 0.88rem;
+  color: var(--telemetry-yellow);
+  background: rgba(255, 214, 0, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 214, 0, 0.3);
+}
+
+.circuit-home strong {
+  color: #ffffff;
+}
+
+.driver-full-name {
+  font-family: var(--font-f1);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.8rem;
+}
+
+.driver-given {
+  color: #ffffff;
+  display: block;
+}
+
+.driver-family {
+  color: var(--ferrari-red);
+  text-shadow: 0 0 25px rgba(232, 0, 45, 0.6);
+  display: block;
+}
+
+.driver-team-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.team-color-bar {
+  width: 14px;
+  height: 14px;
+  background: var(--ferrari-red);
+  transform: skewX(-15deg);
+}
+
+.team-name {
+  font-family: var(--font-tech);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #e4e4e7;
+  text-transform: uppercase;
+}
+
+.driver-grid-bio {
+  color: #a1a1aa;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
+  max-width: 620px;
+}
+
+/* Telemetry Grid inside Driver Card */
+.driver-telemetry-hud {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.telemetry-box {
+  background: rgba(10, 10, 12, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.telemetry-label {
+  display: block;
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #71717a;
+  margin-bottom: 0.2rem;
+}
+
+.telemetry-val {
+  font-family: var(--font-hud);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.telemetry-val .unit {
+  font-size: 0.65rem;
+  font-family: var(--font-tech);
+  color: #a1a1aa;
+}
+
+.purple-glow {
+  color: var(--telemetry-purple) !important;
+  text-shadow: 0 0 10px var(--telemetry-purple-glow);
+}
+
+.green-glow {
+  color: var(--telemetry-green) !important;
+  text-shadow: 0 0 10px var(--telemetry-green-glow);
+}
+
+.mini-hud-bar {
+  width: 100%;
+  height: 3px;
+  background: #27272a;
+  border-radius: 2px;
+  margin-top: 0.4rem;
+  overflow: hidden;
+}
+
+.mini-hud-bar .fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--f1-red), var(--telemetry-yellow));
+}
+
+/* Driver CTAs */
+.driver-cta-row {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.f1-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.85rem 1.6rem;
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transform: skewX(-12deg);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.f1-btn span {
+  transform: skewX(12deg);
+}
+
+.f1-btn-primary {
+  background: linear-gradient(135deg, var(--f1-red), #ff2a2a);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.f1-btn-primary:hover {
+  background: linear-gradient(135deg, #ff2a2a, var(--f1-red));
+  box-shadow: 0 0 25px rgba(225, 6, 0, 0.8);
+  transform: skewX(-12deg) translateY(-2px);
+}
+
+.f1-btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.f1-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+  transform: skewX(-12deg) translateY(-2px);
+}
+
+/* Column 3: Paddock Standing & Track Map */
+.driver-stats-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.paddock-badge {
+  background: rgba(15, 15, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid var(--ferrari-red);
+  padding: 1rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.badge-icon {
+  font-size: 2rem;
+}
+
+.badge-text .b-sub {
+  display: block;
+  font-family: var(--font-tech);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #71717a;
+}
+
+.badge-text .b-main {
+  display: block;
+  font-family: var(--font-hud);
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.badge-text .b-status {
+  display: inline-block;
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--telemetry-green);
+}
+
+.mini-circuit-map {
+  background: rgba(12, 12, 15, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 1.2rem;
+}
+
+.circuit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #a1a1aa;
+  margin-bottom: 0.8rem;
+}
+
+.circuit-header .drs-zone {
+  color: var(--telemetry-drs);
+  background: rgba(0, 255, 102, 0.12);
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+}
+
+.track-svg {
+  width: 100%;
+  height: 90px;
+}
+
+.track-racing-line {
+  animation: racingLinePulse 2.5s infinite linear;
+}
+
+@keyframes racingLinePulse {
+  to { stroke-dashoffset: -48; }
+}
+
+.car-gps-blip {
+  animation: carBlip 3s infinite ease-in-out alternate;
+}
+
+@keyframes carBlip {
+  0% { cx: 30; cy: 90; }
+  50% { cx: 160; cy: 60; }
+  100% { cx: 100; cy: 45; }
+}
+
+.circuit-footer {
+  margin-top: 0.6rem;
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  color: #71717a;
+  text-align: right;
+}
+
+.circuit-footer strong {
+  color: var(--telemetry-purple);
+}
+
+/* ==========================================================================
+   SECTION 2: SKILLS LEADERBOARD TIMING TOWER & OVERTAKING CARS
+   Official F1 timing tower look with interval timing, sectors, DRS,
+   and animated overtaking position swaps!
+   ========================================================================== */
+.timing-tower-card {
+  background: rgba(18, 18, 22, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85);
+}
+
+.tower-top-bar {
+  background: #09090c;
+  padding: 1rem 1.8rem;
+  border-bottom: 2px solid var(--f1-red);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tower-title {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-hud);
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+}
+
+.tower-legend {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #a1a1aa;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.swatch.purple { background: var(--telemetry-purple); }
+.swatch.green { background: var(--telemetry-green); }
+.swatch.yellow { background: var(--telemetry-yellow); }
+
+/* Leaderboard Grid Structure */
+.leaderboard-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.lb-row {
+  display: grid;
+  grid-template-columns: 60px 75px 230px 1fr 90px 90px 90px 105px 120px;
+  align-items: center;
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.lb-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+  transform: scale(1.005);
+}
+
+/* Header row */
+.lb-header-row {
+  background: #111115;
+  font-family: var(--font-tech);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #71717a;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.col-pos {
+  font-family: var(--font-hud);
+  font-weight: 900;
+  font-size: 1.15rem;
+}
+
+.pos-num.p1 {
+  color: var(--telemetry-yellow);
+  text-shadow: 0 0 10px rgba(255, 214, 0, 0.6);
+}
+.pos-num.p2 { color: #e4e4e7; }
+.pos-num.p3 { color: #d97706; }
+.pos-num.p4, .pos-num.p5 { color: #94a3b8; }
+.pos-num.out { color: var(--f1-red); font-size: 0.9rem; }
+
+.col-gain .delta-gain {
+  font-family: var(--font-hud);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+}
+
+.delta-gain.up {
+  color: var(--telemetry-green);
+  background: rgba(0, 230, 118, 0.15);
+}
+
+.delta-gain.down {
+  color: var(--f1-red);
+  background: rgba(225, 6, 0, 0.15);
+}
+
+.delta-gain.equal {
+  color: #71717a;
+}
+
+/* Team Stripe & Identity */
+.col-team {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.team-stripe {
+  width: 5px;
+  height: 38px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.ferrari-stripe { background: var(--ferrari-red); box-shadow: 0 0 8px var(--ferrari-glow); }
+.mercedes-stripe { background: var(--mercedes-teal); box-shadow: 0 0 8px var(--mercedes-glow); }
+.redbull-stripe { background: var(--redbull-yellow); box-shadow: 0 0 8px var(--redbull-glow); }
+.mclaren-stripe { background: var(--mclaren-papaya); box-shadow: 0 0 8px var(--mclaren-glow); }
+.aston-stripe { background: var(--aston-green); }
+.legacy-stripe { background: #555; }
+
+.team-meta .driver-name-code {
+  display: block;
+  font-family: var(--font-hud);
+  font-size: 0.98rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.8px;
+}
+
+.team-meta .constructor-sub {
+  display: block;
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #71717a;
+  letter-spacing: 1px;
+}
+
+/* Tech Chips in Leaderboard */
+.col-skill {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tech-chips {
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e4e4e7;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+}
+
+.tech-chips.highlight {
+  background: rgba(232, 0, 45, 0.15);
+  border-color: rgba(232, 0, 45, 0.4);
+  color: #ff8585;
+}
+
+.tech-chips.strikethrough {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.tech-chips.status-red {
+  background: rgba(225, 6, 0, 0.2);
+  color: #ff4d4d;
+  font-weight: 700;
+}
+
+/* Sectors & Timers */
+.sector {
+  font-family: var(--font-hud);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.normal-time {
+  color: #cbd5e1;
+}
+
+.red-time {
+  color: var(--f1-red);
+  font-weight: 900;
+}
+
+.gap-badge {
+  font-family: var(--font-hud);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.gap-badge.leader {
+  background: rgba(255, 214, 0, 0.15);
+  border: 1px solid var(--telemetry-yellow);
+  color: var(--telemetry-yellow);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+}
+
+.gap-badge.dnf {
+  color: #ef4444;
+}
+
+/* DRS Status Badge */
+.drs-pill {
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  text-align: center;
+  display: block;
+}
+
+.drs-pill.active {
+  background: rgba(0, 255, 102, 0.16);
+  border: 1px solid var(--telemetry-drs);
+  color: var(--telemetry-drs);
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+  animation: drsPulse 1.4s infinite alternate;
+}
+
+@keyframes drsPulse {
+  from { opacity: 0.8; }
+  to { opacity: 1; box-shadow: 0 0 16px rgba(0, 255, 102, 0.7); }
+}
+
+.drs-pill.armed {
+  background: rgba(255, 214, 0, 0.15);
+  border: 1px solid var(--telemetry-yellow);
+  color: var(--telemetry-yellow);
+}
+
+.drs-pill.disabled {
+  background: rgba(255, 255, 255, 0.04);
+  color: #52525b;
+}
+
+/* ==========================================================================
+   ANIMATED OVERTAKES KEYFRAMES (CSS Overtake Effect as user views section)
+   Simulates cars executing dynamic overtakes on the straight!
+   ========================================================================== */
+.overtake-row-1 {
+  animation: overtakeP1 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overtake-row-2 {
+  animation: overtakeP2 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes overtakeP1 {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+  30%, 50% {
+    transform: translateY(4px) scale(0.995);
+  }
+  70%, 90% {
+    transform: translateY(0) scale(1.01);
+    background: rgba(232, 0, 45, 0.12);
+    box-shadow: inset 0 0 20px rgba(232, 0, 45, 0.3);
+  }
+}
+
+@keyframes overtakeP2 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  30%, 50% {
+    transform: translateY(-8px) scale(1.01);
+    background: rgba(0, 210, 190, 0.12);
+    box-shadow: inset 0 0 20px rgba(0, 210, 190, 0.3);
+  }
+  70%, 90% {
+    transform: translateY(0) scale(0.995);
+  }
+}
+
+.tower-bottom-ticker {
+  background: #09090c;
+  padding: 0.75rem 1.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-tech);
+  font-size: 0.78rem;
+  color: var(--telemetry-green);
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   SECTION 3: PROJECTS (F1 TEAM PITWALL & CONSTRUCTOR SCORECARDS)
+   Alternating side scorecards sliding in from Left & Right
+   ========================================================================== */
+.scorecards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.scorecard-item {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  background: var(--f1-card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--f1-card-border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+  position: relative;
+}
+
+/* Side animations */
+.slide-from-left {
+  animation: slideInFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.slide-from-right {
+  animation: slideInFromRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(50px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.scorecard-item:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9);
+}
+
+/* Pitwall Scorecard Visual (Side 1) */
+.scorecard-visual {
+  background: #0e0e12;
+  padding: 2rem 1.8rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.team-mercedes-card .scorecard-visual,
+.team-mclaren-card .scorecard-visual {
+  border-right: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.scorecard-badge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.sc-team-flag {
+  font-family: var(--font-hud);
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.sc-status-pill {
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+}
+
+.live-pill {
+  background: rgba(232, 0, 45, 0.2);
+  border: 1px solid var(--ferrari-red);
+  color: #ff4d4d;
+}
+
+.teal-pill {
+  background: rgba(0, 210, 190, 0.2);
+  border: 1px solid var(--mercedes-teal-bright);
+  color: var(--mercedes-teal-bright);
+}
+
+.yellow-pill {
+  background: rgba(255, 215, 0, 0.2);
+  border: 1px solid var(--redbull-yellow);
+  color: var(--redbull-yellow);
+}
+
+.orange-pill {
+  background: rgba(255, 128, 0, 0.2);
+  border: 1px solid var(--mclaren-papaya);
+  color: var(--mclaren-papaya);
+}
+
+/* Telemetry Dial / HUD Circle */
+.scorecard-telemetry-display {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.telemetry-hud-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background: radial-gradient(circle, #1a1a22 0%, #08080a 100%);
+  border: 3px solid var(--ferrari-red);
+  box-shadow: 0 0 20px var(--ferrari-glow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.telemetry-hud-circle.teal-circle {
+  border-color: var(--mercedes-teal-bright);
+  box-shadow: 0 0 20px var(--mercedes-glow);
+}
+
+.telemetry-hud-circle.yellow-circle {
+  border-color: var(--redbull-yellow);
+  box-shadow: 0 0 20px var(--redbull-glow);
+}
+
+.telemetry-hud-circle.orange-circle {
+  border-color: var(--mclaren-papaya);
+  box-shadow: 0 0 20px var(--mclaren-glow);
+}
+
+.hud-stat-num {
+  font-family: var(--font-hud);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+
+.hud-stat-num small {
+  font-size: 1rem;
+}
+
+.hud-stat-lbl {
+  font-family: var(--font-tech);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #a1a1aa;
+  letter-spacing: 0.8px;
+  margin-top: 0.2rem;
+}
+
+.telemetry-hud-metrics {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-tech);
+  font-size: 0.78rem;
+}
+
+.metric-row span {
+  color: #71717a;
+}
+
+.metric-row strong {
+  color: #ffffff;
+}
+
+.telemetry-graph-bar {
+  width: 100%;
+  height: 6px;
+  background: #1c1c24;
+  border-radius: 3px;
+  margin: 1.2rem 0;
+  overflow: hidden;
+}
+
+.graph-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+.ferrari-fill { background: linear-gradient(90deg, var(--ferrari-red), var(--ferrari-accent)); }
+.mercedes-fill { background: linear-gradient(90deg, var(--mercedes-teal), var(--mercedes-teal-bright)); }
+.redbull-fill { background: linear-gradient(90deg, var(--redbull-red), var(--redbull-yellow)); }
+.mclaren-fill { background: linear-gradient(90deg, var(--mclaren-papaya), var(--mclaren-blue)); }
+
+.scorecard-bottom-strip {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-hud);
+  font-size: 0.74rem;
+  font-weight: 900;
+  color: var(--telemetry-yellow);
+}
+
+/* Scorecard Content & Dossier (Side 2) */
+.scorecard-content {
+  padding: 2.2rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sc-project-num {
+  font-family: var(--font-hud);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--f1-red);
+  letter-spacing: 2px;
+  margin-bottom: 0.4rem;
+}
+
+.sc-project-title {
+  font-family: var(--font-f1);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  font-style: italic;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.9rem;
+}
+
+.sc-project-description {
+  color: #a1a1aa;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  margin-bottom: 1.4rem;
+}
+
+.sc-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.sc-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.95rem;
+  color: #d4d4d8;
+}
+
+.check-icon {
+  color: var(--telemetry-green);
+  font-weight: 900;
+}
+
+.sc-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.f1-chip {
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e4e4e7;
+  padding: 0.25rem 0.75rem;
+  border-radius: 3px;
+  transform: skewX(-8deg);
+}
+
+.sc-actions-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.f1-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.4rem;
+  font-family: var(--font-tech);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  transform: skewX(-10deg);
+  transition: all 0.25s ease;
+}
+
+.primary-red {
+  background: var(--ferrari-red);
+  color: #fff;
+  border: 1px solid var(--ferrari-red);
+}
+.primary-red:hover {
+  background: #ff2247;
+  box-shadow: 0 0 18px var(--ferrari-glow);
+}
+
+.primary-teal {
+  background: var(--mercedes-teal);
+  color: #fff;
+  border: 1px solid var(--mercedes-teal);
+}
+.primary-teal:hover {
+  background: var(--mercedes-teal-bright);
+  box-shadow: 0 0 18px var(--mercedes-glow);
+}
+
+.primary-yellow {
+  background: var(--redbull-yellow);
+  color: #000;
+  border: 1px solid var(--redbull-yellow);
+}
+.primary-yellow:hover {
+  background: #ffe347;
+  box-shadow: 0 0 18px var(--redbull-glow);
+}
+
+.primary-orange {
+  background: var(--mclaren-papaya);
+  color: #000;
+  border: 1px solid var(--mclaren-papaya);
+}
+.primary-orange:hover {
+  background: #ffa033;
+  box-shadow: 0 0 18px var(--mclaren-glow);
+}
+
+.secondary-ghost {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.secondary-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   SECTION 4: ABOUT ME (DRIVER DOSSIER & ASPIRING ENTREPRENEUR)
+   ========================================================================== */
+.about-bento-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.8rem;
+}
+
+.bento-card {
+  background: var(--f1-card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--f1-card-border);
+  border-radius: 8px;
+  padding: 2.2rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-3px);
+}
+
+.bento-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.bento-badge {
+  font-family: var(--font-hud);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--f1-red);
+  letter-spacing: 2px;
+}
+
+.bento-location {
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--telemetry-yellow);
+}
+
+.bento-title {
+  font-family: var(--font-f1);
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 900;
+  font-style: italic;
+  color: #ffffff;
+  margin-bottom: 1.1rem;
+}
+
+.bento-text {
+  color: #a1a1aa;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+
+.bento-text strong {
+  color: #ffffff;
+}
+
+.entrepreneur-quote-box {
+  background: rgba(10, 10, 14, 0.7);
+  border-left: 3px solid var(--mclaren-papaya);
+  border-radius: 4px;
+  padding: 1.2rem 1.5rem;
+  margin-top: 1.5rem;
+  position: relative;
+}
+
+.quote-sign {
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  font-family: serif;
+  font-size: 3rem;
+  color: rgba(255, 128, 0, 0.2);
+  line-height: 1;
+}
+
+.entrepreneur-quote-box p {
+  font-style: italic;
+  color: #e4e4e7;
+  font-size: 0.98rem;
+  margin-bottom: 0.5rem;
+}
+
+.quote-author {
+  display: block;
+  font-family: var(--font-tech);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--mclaren-papaya);
+}
+
+/* Biometrics Bento Card */
+.biometric-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.bio-item {
+  background: rgba(10, 10, 14, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  padding: 0.8rem 1.1rem;
+}
+
+.bio-label {
+  display: block;
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #71717a;
+  letter-spacing: 1.2px;
+}
+
+.bio-val {
+  display: block;
+  font-family: var(--font-hud);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 0.15rem;
+}
+
+/* Track Record Bento Card */
+.bento-card-sub {
+  font-family: var(--font-hud);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+}
+
+.track-record-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.track-record-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 0.96rem;
+  color: #a1a1aa;
+}
+
+.track-record-list strong {
+  color: #ffffff;
+}
+
+.flag-trophy {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Garage Compounds Bento Card */
+.garage-desc {
+  color: #a1a1aa;
+  font-size: 0.98rem;
+  margin-bottom: 1.4rem;
+}
+
+.garage-compounds {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.compound-tag {
+  font-family: var(--font-tech);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.6rem 0.9rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.soft-tag {
+  background: rgba(232, 0, 45, 0.12);
+  border: 1px solid var(--ferrari-red);
+  color: #ff5c77;
+}
+
+.med-tag {
+  background: rgba(255, 214, 0, 0.12);
+  border: 1px solid var(--telemetry-yellow);
+  color: var(--telemetry-yellow);
+}
+
+.hard-tag {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #d1d5db;
+  color: #ffffff;
+}
+
+.compound-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.compound-dot.red { background: var(--ferrari-red); box-shadow: 0 0 6px var(--ferrari-red); }
+.compound-dot.yellow { background: var(--telemetry-yellow); box-shadow: 0 0 6px var(--telemetry-yellow); }
+.compound-dot.white { background: #ffffff; box-shadow: 0 0 6px #fff; }
+
+/* ==========================================================================
+   SECTION 5: EXPERIENCE (GRAND PRIX SEASONS TIMELINE)
+   ========================================================================== */
+.experience-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.timeline-stint {
+  display: grid;
+  grid-template-columns: 220px 50px 1fr;
+  align-items: flex-start;
+}
+
+.stint-badge-col {
+  text-align: right;
+  padding-right: 1.5rem;
+}
+
+.stint-year {
+  font-family: var(--font-hud);
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.stint-tyre {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.tyre-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-family: var(--font-hud);
+  font-size: 0.72rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tyre-circle.soft {
+  background: var(--ferrari-red);
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.tyre-circle.medium {
+  background: var(--telemetry-yellow);
+  color: #000;
+  border: 2px solid #fff;
+}
+
+.tyre-circle.hard {
+  background: #ffffff;
+  color: #000;
+  border: 2px solid #333;
+}
+
+.tyre-strat {
+  font-family: var(--font-tech);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #71717a;
+}
+
+/* Timeline center marker */
+.stint-marker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.marker-point {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--f1-red);
+  border: 3px solid #000;
+  box-shadow: 0 0 12px var(--f1-red);
+  z-index: 2;
+  margin-top: 4px;
+}
+
+.marker-line {
+  width: 2px;
+  background: linear-gradient(180deg, var(--f1-red), rgba(255, 255, 255, 0.1));
+  flex: 1;
+  min-height: 120px;
+}
+
+/* Timeline card */
+.stint-card {
+  background: var(--f1-card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--f1-card-border);
+  border-radius: 8px;
+  padding: 1.8rem 2rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.stint-card:hover {
+  transform: translateX(6px);
+}
+
+.team-ferrari-stint { border-left: 4px solid var(--ferrari-red); }
+.team-mercedes-stint { border-left: 4px solid var(--mercedes-teal); }
+.team-redbull-stint { border-left: 4px solid var(--redbull-yellow); }
+
+.stint-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.stint-role {
+  font-family: var(--font-f1);
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.stint-team {
+  display: block;
+  font-family: var(--font-tech);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #a1a1aa;
+}
+
+.stint-pos-badge {
+  font-family: var(--font-hud);
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: var(--telemetry-yellow);
+  background: rgba(255, 214, 0, 0.12);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  border: 1px solid var(--telemetry-yellow);
+  transform: skewX(-8deg);
+}
+
+.stint-description {
+  color: #a1a1aa;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.stint-telemetry-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.stint-telemetry-chips .chip {
+  font-family: var(--font-tech);
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #d1d5db;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+}
+
+/* ==========================================================================
+   SECTION 6: CONTACT DETAILS & EMAIL SEARCH DISPATCH BAR
+   ========================================================================== */
+.radio-console-card {
+  background: var(--f1-card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--f1-card-border);
+  border-radius: 8px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  position: relative;
+}
+
+.console-hud-top {
+  background: #0a0a0d;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hud-channel {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-hud);
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+
+.hud-channel strong {
+  color: #ffffff;
+}
+
+.hud-status-active {
+  font-family: var(--font-tech);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--telemetry-green);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Search & Email Dispatch Bar */
+.dispatch-bar-container {
+  padding: 2.5rem 2rem;
+  background: radial-gradient(circle at 50% 50%, rgba(225, 6, 0, 0.08) 0%, transparent 70%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dispatch-label-text {
+  font-family: var(--font-tech);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #a1a1aa;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.9rem;
+}
+
+.terminal-prompt {
+  color: var(--f1-red);
+  font-weight: 900;
+}
+
+.f1-search-dispatch-form {
+  display: flex;
+  gap: 1rem;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-scope-icon {
+  position: absolute;
+  left: 1.2rem;
+  font-size: 1.1rem;
+  color: #71717a;
+  pointer-events: none;
+}
+
+.f1-search-input {
+  width: 100%;
+  height: 56px;
+  background: rgba(10, 10, 14, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 0 1.2rem 0 3.2rem;
+  font-family: var(--font-tech);
+  font-size: 1.05rem;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.f1-search-input:focus {
+  border-color: var(--f1-red);
+  box-shadow: 0 0 20px rgba(225, 6, 0, 0.4);
+  background: #0f0f15;
+}
+
+.f1-search-input::placeholder {
+  color: #52525b;
+}
+
+.f1-transmit-btn {
+  height: 56px;
+  padding: 0 2rem;
+  background: linear-gradient(135deg, var(--f1-red), #ff2222);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transform: skewX(-10deg);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(225, 6, 0, 0.5);
+}
+
+.f1-transmit-btn span {
+  transform: skewX(10deg);
+}
+
+.f1-transmit-btn:hover {
+  background: linear-gradient(135deg, #ff2222, var(--f1-red));
+  box-shadow: 0 0 30px rgba(225, 6, 0, 0.8);
+  transform: skewX(-10deg) translateY(-2px);
+}
+
+/* Paddock Contact Info Grid */
+.paddock-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  padding: 2.2rem 2rem;
+}
+
+.contact-tele-box {
+  background: rgba(12, 12, 16, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 1.2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.c-box-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.c-label {
+  display: block;
+  font-family: var(--font-tech);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #71717a;
+}
+
+.c-val {
+  display: block;
+  font-family: var(--font-hud);
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin: 0.2rem 0;
+}
+
+.c-val.green-text {
+  color: var(--telemetry-green);
+}
+
+.c-val-link {
+  display: block;
+  font-family: var(--font-hud);
+  font-size: 0.92rem;
+  color: var(--mclaren-papaya);
+  text-decoration: none;
+  margin: 0.2rem 0;
+}
+
+.c-val-link:hover {
+  text-decoration: underline;
+}
+
+.c-sub {
+  display: block;
+  font-size: 0.78rem;
+  color: #71717a;
+}
+
+.social-paddock-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.social-pill {
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #e4e4e7;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.social-pill:hover {
+  background: var(--f1-red);
+  color: #fff;
+  border-color: var(--f1-red);
+}
+
+/* Checkered Footer Banner */
+.console-footer-banner {
+  background: #09090c;
+  padding: 0.9rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.checkered-pattern {
+  width: 90px;
+  height: 16px;
+  background-image: 
+    linear-gradient(45deg, #fff 25%, transparent 25%),
+    linear-gradient(-45deg, #fff 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #fff 75%),
+    linear-gradient(-45deg, transparent 75%, #fff 75%);
+  background-size: 8px 8px;
+  opacity: 0.7;
+}
+
+.footer-quote {
+  font-family: var(--font-hud);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #a1a1aa;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.f1-footer {
+  background: #070709;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.5rem 0;
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  color: #71717a;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #e4e4e7;
+  font-weight: 700;
+}
+
+.f1-red-logo {
+  background: var(--f1-red);
+  color: #fff;
+  font-family: var(--font-hud);
+  font-size: 0.9rem;
+  font-weight: 900;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+
+.bull-sep {
+  color: var(--f1-red);
+  margin: 0 0.5rem;
+}
+
+.back-to-grid-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-tech);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #a1a1aa;
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.back-to-grid-btn:hover {
+  background: var(--f1-red);
+  color: #fff;
+  border-color: var(--f1-red);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETS & MOBILE DEVICES)
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .driver-card-body {
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+  }
+  
+  .driver-stats-col {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lb-row {
+    grid-template-columns: 50px 65px 180px 1fr 75px 85px;
+  }
+  
+  .col-s1, .col-s3, .col-drs {
+    display: none;
+  }
+
+  .scorecard-item {
+    grid-template-columns: 1fr;
+  }
+
+  .scorecard-visual {
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .about-bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .paddock-contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 70px;
+    --ticker-height: 32px;
+  }
+
+  .f1-ticker-strip {
+    font-size: 0.7rem;
+    padding: 0 0.8rem;
+  }
+
+  .ticker-center {
+    display: none;
+  }
+
+  .rolling-wheel-assembly {
+    width: 48px;
+    height: 48px;
+  }
+
+  .driver-tag {
+    font-size: 1.1rem;
+  }
+
+  .mobile-menu-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+    margin-left: auto;
+  }
+
+  .burger-bar {
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Hamburger transform when menu is active */
+  .mobile-toggle-checkbox:checked ~ .mobile-menu-burger .burger-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: var(--f1-red);
+  }
+
+  .mobile-toggle-checkbox:checked ~ .mobile-menu-burger .burger-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle-checkbox:checked ~ .mobile-menu-burger .burger-bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+    background-color: var(--f1-red);
+  }
+
+  /* Pure CSS Mobile Navigation Menu Drawer */
+  .mobile-toggle-checkbox:checked ~ .f1-navbar .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: calc(var(--nav-height) + var(--ticker-height));
+    left: 0;
+    width: 100%;
+    background: rgba(14, 14, 18, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 2px solid var(--f1-red);
+    padding: 1.5rem 2rem 2.5rem 2rem;
+    gap: 1.2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+  }
+
+  .mobile-toggle-checkbox:checked ~ .f1-navbar .nav-links li {
+    width: 100%;
+  }
+
+  .mobile-toggle-checkbox:checked ~ .f1-navbar .nav-links .nav-link {
+    font-size: 1.1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-links {
+    display: none; /* Hidden by default until burger checked */
+  }
+
+  .driver-card-body {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1.2rem;
+  }
+
+  .driver-num-col {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .driver-mega-number {
+    font-size: 4rem;
+  }
+
+  .driver-helmet-badge {
+    margin-top: 0;
+  }
+
+  .driver-stats-col {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+  }
+
+  .driver-telemetry-hud {
+    grid-template-columns: 1fr;
+  }
+
+  .lb-header-row {
+    display: none;
+  }
+
+  .lb-row {
+    grid-template-columns: 45px 55px 1fr 75px;
+    gap: 0.5rem;
+    padding: 0.9rem;
+  }
+
+  .col-skill, .col-s2 {
+    display: none;
+  }
+
+  .timeline-stint {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .stint-badge-col {
+    text-align: left;
+    padding-right: 0;
+  }
+
+  .stint-marker {
+    display: none;
+  }
+
+  .f1-search-dispatch-form {
+    flex-direction: column;
+  }
+
+  .f1-transmit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .paddock-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+  }
+}
